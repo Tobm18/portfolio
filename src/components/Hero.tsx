@@ -1,9 +1,11 @@
 import Image from 'next/image'
 import Navbar from './Navbar'
+import NetworkBackground from './NetworkBackground'
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center">
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
+      <NetworkBackground />
       <Navbar />
       <div className="container mx-auto px-4 pt-24 md:pt-32 grid md:grid-cols-2 gap-8 items-center">
         <div className="text-center md:text-left">
