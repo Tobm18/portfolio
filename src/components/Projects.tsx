@@ -10,8 +10,9 @@ type Project = {
   description: string;
   image: string;
   tags: string[];
-  demoLink: string;
-  codeLink: string;
+  demoLink?: string;
+  codeLink?: string;
+  pdfLink?: string;
   category: 'web' | 'reseaux' | 'ecriture';
 };
 
@@ -26,32 +27,20 @@ export default function Projects() {
     // Projets Réseaux
     {
       id: 1,
-      title: "Migration de serveur",
-      description: "Projet de migration d'un serveur Windows Server 2016 vers Windows Server 2019 avec transfert des services et des données.",
-      image: "/projects/network1.jpg",
-      tags: ["Windows Server", "Migration", "Active Directory"],
-      demoLink: "https://github.com/Tobm18",
-      codeLink: "https://github.com/Tobm18",
+      title: "SAE-21: Réseau d'entreprise",
+      description: "Réalisation d'un réseau d'entreprise sur packet tracer dans le cadre d'un projet à l'université. Ce projet en autonomie étalé sur 2 mois, avait pour objectif de construire le réseau d'une entreprise type PME, en utilisant plusieurs technologies dont un ASA Cisco pour toucher au concept de firewall, une DMZ, un serveur DHCP, DNS, différents VLANs, switch de niveau 3 et protocole de routage dynamique EIGRP.",
+      image: "/projects/network/sae21.jpg",
+      tags: ["Packet Tracer", "Firewall", "DMZ", "DHCP", "DNS", "VLANs"],
+      pdfLink: "/SAE-21_PDF.pdf",
       category: "reseaux"
     },
     {
       id: 2,
-      title: "Surveillance Réseau",
-      description: "Mise en place d'un système de surveillance d'utilisation des licences logicielles chez ProBTP.",
-      image: "/projects/network2.jpg",
-      tags: ["Monitoring", "Licences", "DevOps"],
-      demoLink: "https://github.com/Tobm18",
-      codeLink: "https://github.com/Tobm18",
-      category: "reseaux"
-    },
-    {
-      id: 3,
-      title: "Outil de Purge Nexus",
-      description: "Création d'un outil permettant de purger régulièrement le serveur Nexus de ProBTP.",
-      image: "/projects/network3.jpg",
-      tags: ["Nexus", "Automatisation", "DevOps"],
-      demoLink: "https://github.com/Tobm18",
-      codeLink: "https://github.com/Tobm18",
+      title: "SAE-33: Infrastructure réseau complexe",
+      description: "Réalisation d'un réseau d'entreprise avancé sur packet tracer dans le cadre d'un projet universitaire. Ce projet en autonomie étalé sur 2 mois, visait à approfondir mes compétences en construisant une infrastructure réseau complète pour une PME, avec implémentation de sécurité avancée via ASA Cisco, segmentation réseau en zones distinctes, services centralisés et routage dynamique EIGRP optimisé.",
+      image: "/projects/network/sae33.jpg",
+      tags: ["Packet Tracer", "ASA Cisco", "Sécurité Réseau", "Routage", "EIGRP", "VLANs"],
+      pdfLink: "/SAE-21_PDF.pdf",
       category: "reseaux"
     },
     
@@ -357,6 +346,75 @@ export default function Projects() {
               </svg>
               Télécharger le livret complet (PDF)
             </a>
+          </div>
+        ) : activeTab === 'reseaux' ? (
+          // Nouveau style pour les projets réseau
+          <div className="max-w-6xl mx-auto">
+            {filteredProjects.map(project => (
+              <div 
+                key={project.id}
+                className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-900 rounded-lg overflow-hidden shadow-xl mb-10 transition-all hover:shadow-2xl border border-gray-200 dark:border-gray-700"
+              >
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-0">
+                  {/* Image à gauche sur desktop, en haut sur mobile */}
+                  <div className="md:col-span-2 relative h-64 md:h-full">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover"
+                    />
+                    
+                    {/* Badge "Projet Réseau" */}
+                    <div className="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-lg">
+                      Projet Réseau
+                    </div>
+                  </div>
+                  
+                  {/* Contenu à droite sur desktop, en bas sur mobile */}
+                  <div className="md:col-span-3 p-8">
+                    <h3 className="text-2xl font-bold mb-4 text-gray-800 dark:text-white">{project.title}</h3>
+                    
+                    {/* Grid pour les tags */}
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {project.tags.map(tag => (
+                        <span key={tag} className="inline-block bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs font-semibold px-3 py-1 rounded-full">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                      {project.description}
+                    </p>
+                    
+                    {/* Bouton de téléchargement PDF avec icône */}
+                    {project.pdfLink && (
+                      <a 
+                        href={project.pdfLink}
+                        download
+                        className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors shadow-md hover:shadow-lg"
+                      >
+                        <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                        Télécharger la consigne
+                      </a>
+                    )}
+                  </div>
+                </div>
+                
+                {/* Barre colorée en bas avec mention "Packet Tracer" */}
+                <div className="bg-blue-600 dark:bg-blue-800 py-2 px-8 flex justify-between items-center">
+                  <span className="text-white font-medium">Technologies utilisées: Packet Tracer</span>
+                  
+                  <div className="flex items-center">
+                    <span className="h-2 w-2 rounded-full bg-green-400 mr-1"></span>
+                    <span className="text-white text-sm">Projet complété</span>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         ) : (
           // Conteneur avec défilement horizontal
