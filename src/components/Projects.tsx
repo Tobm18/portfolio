@@ -23,97 +23,117 @@ export default function Projects() {
   const bookRef = useRef<HTMLDivElement>(null);
 
   const projects: Project[] = [
-    // Projets Web
+    // Projets Réseaux
     {
       id: 1,
-      title: "E-commerce Website",
-      description: "Une plateforme de commerce électronique complète avec panier, paiement et gestion de compte.",
-      image: "/projects/project1.jpg",
-      tags: ["React", "Node.js", "MongoDB", "Express"],
-      demoLink: "https://demo.example.com",
-      codeLink: "https://github.com/username/project",
-      category: "web"
+      title: "Migration de serveur",
+      description: "Projet de migration d'un serveur Windows Server 2016 vers Windows Server 2019 avec transfert des services et des données.",
+      image: "/projects/network1.jpg",
+      tags: ["Windows Server", "Migration", "Active Directory"],
+      demoLink: "https://github.com/Tobm18",
+      codeLink: "https://github.com/Tobm18",
+      category: "reseaux"
     },
     {
       id: 2,
-      title: "Application de Gestion de Tâches",
-      description: "Une application permettant d'organiser et de suivre vos tâches avec des fonctionnalités de glisser-déposer.",
-      image: "/projects/project2.jpg",
-      tags: ["Next.js", "TypeScript", "Tailwind CSS"],
-      demoLink: "https://demo.example.com",
-      codeLink: "https://github.com/username/project",
-      category: "web"
+      title: "Surveillance Réseau",
+      description: "Mise en place d'un système de surveillance d'utilisation des licences logicielles chez ProBTP.",
+      image: "/projects/network2.jpg",
+      tags: ["Monitoring", "Licences", "DevOps"],
+      demoLink: "https://github.com/Tobm18",
+      codeLink: "https://github.com/Tobm18",
+      category: "reseaux"
     },
     {
       id: 3,
-      title: "Portfolio Personnel",
-      description: "Un site web portfolio moderne et réactif présentant mes compétences et projets.",
-      image: "/projects/project3.jpg",
-      tags: ["Next.js", "Tailwind CSS", "TypeScript"],
-      demoLink: "https://demo.example.com",
-      codeLink: "https://github.com/username/project",
-      category: "web"
+      title: "Outil de Purge Nexus",
+      description: "Création d'un outil permettant de purger régulièrement le serveur Nexus de ProBTP.",
+      image: "/projects/network3.jpg",
+      tags: ["Nexus", "Automatisation", "DevOps"],
+      demoLink: "https://github.com/Tobm18",
+      codeLink: "https://github.com/Tobm18",
+      category: "reseaux"
     },
     
-    // Projets Réseaux
+    // Projets Web
     {
       id: 4,
-      title: "Système de Monitoring Réseau",
-      description: "Outil de surveillance réseau permettant d'analyser le trafic et de détecter les anomalies en temps réel.",
-      image: "/projects/project4.jpg",
-      tags: ["Python", "SNMP", "Docker", "Grafana"],
-      demoLink: "https://demo.example.com",
-      codeLink: "https://github.com/username/project",
-      category: "reseaux"
+      title: "Ski Club Pégomas",
+      description: "Création et maintenance du site web du club U.S. Ski et Montagne - Pegomas. Le site est réalisé avec PHP et Bootstrap, je le gère depuis 2021.",
+      image: "/projects/web/skiclub.jpg",
+      tags: ["PHP", "Bootstrap", "MySQL"],
+      demoLink: "https://skiclub-pegomas.fr/",
+      codeLink: "https://github.com/Tobm18",
+      category: "web"
     },
     {
       id: 5,
-      title: "VPN Sécurisé",
-      description: "Mise en place d'une solution VPN d'entreprise avec authentification à deux facteurs.",
-      image: "/projects/project5.jpg",
-      tags: ["OpenVPN", "Linux", "Cybersecurity"],
-      demoLink: "https://demo.example.com",
-      codeLink: "https://github.com/username/project",
-      category: "reseaux"
+      title: "R2C - Thales Alenia Space",
+      description: "Création d'une application web pour Thales Alenia Space permettant de recenser et trier les bonnes pratiques lors des tests d'avionique.",
+      image: "/projects/web/r2c.jpg",
+      tags: ["PHP", "MySQL", "Bootstrap"],
+      demoLink: "#",
+      codeLink: "https://github.com/Tobm18",
+      category: "web"
     },
     {
       id: 6,
-      title: "Configuration SDN",
-      description: "Implémentation d'un réseau défini par logiciel pour une infrastructure cloud.",
-      image: "/projects/project6.jpg",
-      tags: ["OpenFlow", "OpenDaylight", "NetConf"],
-      demoLink: "https://demo.example.com",
-      codeLink: "https://github.com/username/project",
-      category: "reseaux"
+      title: "La Plongée",
+      description: "Création d'un site vitrine dans le cadre d'un projet universitaire qui présente la plongée sous marine, une passion commune avec mes amis.",
+      image: "/projects/web/plongee.jpg",
+      tags: ["HTML", "CSS", "JavaScript"],
+      demoLink: "https://tballester.uca-project.online/plongee/",
+      codeLink: "https://github.com/Tobm18",
+      category: "web"
     },
-    
-    // Projets Écriture
     {
       id: 7,
-      title: "Blog Tech",
-      description: "Une série d'articles techniques sur les dernières tendances en développement web.",
-      image: "/projects/project7.jpg",
-      tags: ["Markdown", "Technical Writing", "SEO"],
-      demoLink: "https://demo.example.com",
-      codeLink: "https://github.com/username/project",
-      category: "ecriture"
+      title: "Bourse aux Skis",
+      description: "Application web pour la gestion de la bourse aux skis de Pégomas. Permet d'enregistrer les articles, traiter les ventes et gérer les retours.",
+      image: "/projects/web/bourseskis.jpg",
+      tags: ["React", "Node.js", "MongoDB"],
+      demoLink: "https://bourseauxskis-pegomas.fr/",
+      codeLink: "https://github.com/Tobm18",
+      category: "web"
     },
     {
       id: 8,
-      title: "Documentation API",
-      description: "Documentation complète et guides d'utilisation pour une API RESTful.",
-      image: "/projects/project8.jpg",
-      tags: ["OpenAPI", "Swagger", "Technical Writing"],
+      title: "Premier Portfolio",
+      description: "Création de mon site personnel dans le cadre d'un projet universitaire. Ce portfolio présente mes compétences, mes créations et mon parcours.",
+      image: "/projects/web/portfolio.jpg",
+      tags: ["HTML", "CSS", "JavaScript"],
+      demoLink: "https://tballester.uca-project.online/",
+      codeLink: "https://github.com/Tobm18/portfolio",
+      category: "web"
+    },
+    
+    // Projets d'Écriture
+    {
+      id: 9,
+      title: "Guide de Survie R&T",
+      description: "Un guide complet pour les étudiants en Réseaux et Télécommunications.",
+      image: "/projects/writing1.jpg",
+      tags: ["Documentation", "Pédagogie", "Technique"],
       demoLink: "https://demo.example.com",
       codeLink: "https://github.com/username/project",
       category: "ecriture"
     },
     {
-      id: 9,
-      title: "Tutoriels de Programmation",
-      description: "Série de tutoriels pas-à-pas pour apprendre le développement web moderne.",
-      image: "/projects/project9.jpg",
-      tags: ["Education", "JavaScript", "React"],
+      id: 10,
+      title: "Documentation Technique",
+      description: "Documentation détaillée pour l'utilisation des outils internes.",
+      image: "/projects/writing2.jpg",
+      tags: ["SharePoint", "Wiki", "Procédures"],
+      demoLink: "https://demo.example.com",
+      codeLink: "https://github.com/username/project",
+      category: "ecriture"
+    },
+    {
+      id: 11,
+      title: "Articles Techniques",
+      description: "Série d'articles sur les bonnes pratiques en DevOps et réseaux.",
+      image: "/projects/writing3.jpg",
+      tags: ["Blog", "Tutoriels", "Conseils"],
       demoLink: "https://demo.example.com",
       codeLink: "https://github.com/username/project",
       category: "ecriture"
@@ -339,42 +359,64 @@ export default function Projects() {
             </a>
           </div>
         ) : (
-          // Le reste du code pour les autres onglets...
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map(project => (
-              <div key={project.id} className="card group">
-                {/* Contenu de la carte de projet... */}
-                <div className="relative h-64 w-full overflow-hidden">
-                  <div className="absolute inset-0 bg-primary-600/70 flex items-center justify-center">
-                    <p className="text-white text-lg font-medium">Image de projet</p>
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end">
-                    <div className="p-4 w-full">
-                      <div className="flex gap-2">
-                        <a href={project.demoLink} className="flex-1 px-3 py-2 bg-primary-600 text-white rounded text-sm text-center">
-                          Démo
-                        </a>
-                        <a href={project.codeLink} className="flex-1 px-3 py-2 bg-gray-800 text-white rounded text-sm text-center">
-                          Code
-                        </a>
+          // Conteneur avec défilement horizontal
+          <>
+            <div className="flex justify-between items-center px-2 mb-2">
+              <p className="text-sm text-gray-500 dark:text-gray-400 italic">Faites défiler pour voir plus →</p>
+              <div className="flex space-x-2">
+                <span className="w-2 h-2 rounded-full bg-primary-300 dark:bg-primary-700"></span>
+                <span className="w-2 h-2 rounded-full bg-primary-400 dark:bg-primary-600"></span>
+                <span className="w-2 h-2 rounded-full bg-primary-500 dark:bg-primary-500"></span>
+              </div>
+            </div>
+            <div className="overflow-x-auto">
+              <div className="flex py-6 px-8 space-x-6 snap-x" style={{ width: "fit-content" }}>
+                {filteredProjects.map(project => (
+                  <div 
+                    key={project.id} 
+                    className="card hover:scale-100 md:hover:scale-105 group flex-shrink-0 snap-start bg-white dark:bg-gray-900 shadow-[0px_0px_10px_3px_rgba(0,_0,_0,_0.1)] hover:shadow-[0px_0px_15px_5px_rgba(0,_0,_0,_0.15)] dark:shadow-[0px_0px_10px_3px_rgba(0,_0,_0,_0.3)] dark:hover:shadow-[0px_0px_15px_5px_rgba(0,_0,_0,_0.4)] transition-all duration-300" 
+                    style={{ width: "320px" }}
+                  >
+                    {/* Image du projet avec ratio 16:9 */}
+                    <div className="relative aspect-[16/9] w-full overflow-hidden rounded-t-lg">
+                      <Image 
+                        src={project.image} 
+                        alt={project.title}
+                        fill
+                        sizes="320px"
+                        className="object-contain transition-transform"
+                        priority={project.id <= 3}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end">
+                        <div className="p-4 w-full">
+                          <div className="flex gap-2">
+                            <a href={project.demoLink} className="flex-1 px-3 py-2 bg-primary-600 text-white rounded text-sm text-center">
+                              Démo
+                            </a>
+                            <a href={project.codeLink} className="flex-1 px-3 py-2 bg-gray-800 text-white rounded text-sm text-center">
+                              Code
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                      {/* Affichage complet du texte (sans line-clamp) */}
+                      <p className="text-gray-600 dark:text-gray-400 mb-4">{project.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {project.tags.map(tag => (
+                          <span key={tag} className="px-2 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 text-xs rounded">
+                            {tag}
+                          </span>
+                        ))}
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map(tag => (
-                      <span key={tag} className="px-2 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 text-xs rounded">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </div>
+          </>
         )}
       </div>
     </section>

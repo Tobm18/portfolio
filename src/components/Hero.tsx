@@ -10,16 +10,16 @@ export default function Hero() {
       <div className="container mx-auto px-4 pt-24 md:pt-32 grid md:grid-cols-2 gap-8 items-center">
         <div className="text-center md:text-left">
           <div className="inline-block px-4 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 rounded-full text-sm font-medium mb-6">
-            Développeur Web
+            Réseaux & DevOps
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
             Bonjour, je suis <span className="text-primary-600 dark:text-primary-500">Tom BALLESTER</span>
           </h1>
           <h2 className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-6">
-            Développeur Web & Étudiant passionné
+            Étudiant en BUT-2 Réseaux & Télécommunications | Apprenti DevOps
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-lg mx-auto md:mx-0">
-            Je conçois et développe des expériences web modernes, intuitives et performantes avec un souci constant pour l&apos;expérience utilisateur.
+            Passionné par les technologies des réseaux et la cybersécurité, je développe mes compétences en alternance chez ProBTP.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
             <a 

@@ -1,28 +1,29 @@
 export default function Skills() {
-  const frontendSkills = [
-    { name: "HTML5", level: 90 },
-    { name: "CSS3", level: 85 },
-    { name: "JavaScript", level: 80 },
-    { name: "React", level: 75 },
-    { name: "TypeScript", level: 70 },
-    { name: "Next.js", level: 75 },
-    { name: "Tailwind CSS", level: 85 },
+  const networkSkills = [
+    { name: "Protocoles IP", level: 85 },
+    { name: "Configuration de routeurs/switchs", level: 80 },
+    { name: "VLANs", level: 80 },
+    { name: "TCP/IP", level: 85 },
+    { name: "Sécurisation réseau", level: 75 },
+    { name: "Dépannage réseau", level: 70 },
   ];
   
-  const backendSkills = [
-    { name: "Node.js", level: 70 },
-    { name: "Express", level: 65 },
-    { name: "MySQL", level: 60 },
-    { name: "MongoDB", level: 65 },
-    { name: "API Development", level: 75 },
-  ];
-  
-  const toolsSkills = [
+  const devOpsSkills = [
+    { name: "Docker", level: 75 },
+    { name: "CI/CD", level: 70 },
+    { name: "SharePoint", level: 80 },
+    { name: "Scripting", level: 75 },
     { name: "Git", level: 80 },
-    { name: "VS Code", level: 90 },
-    { name: "Figma", level: 65 },
-    { name: "Docker", level: 50 },
-    { name: "Webpack", level: 55 },
+    { name: "Nexus", level: 65 },
+  ];
+  
+  const webSkills = [
+    { name: "HTML/CSS", level: 85 },
+    { name: "JavaScript", level: 75 },
+    { name: "React", level: 70 },
+    { name: "Node.js", level: 65 },
+    { name: "TypeScript", level: 70 },
+    { name: "Next.js", level: 65 },
   ];
 
   return (
@@ -34,11 +35,11 @@ export default function Skills() {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {/* Frontend Skills */}
+          {/* Network Skills */}
           <div>
-            <h3 className="text-2xl font-bold mb-6 text-center">Frontend</h3>
+            <h3 className="text-2xl font-bold mb-6 text-center">Réseaux</h3>
             <div className="space-y-5">
-              {frontendSkills.map((skill) => (
+              {networkSkills.map((skill) => (
                 <div key={skill.name}>
                   <div className="flex justify-between mb-2">
                     <span className="font-medium">{skill.name}</span>
@@ -55,11 +56,11 @@ export default function Skills() {
             </div>
           </div>
           
-          {/* Backend Skills */}
+          {/* DevOps Skills */}
           <div>
-            <h3 className="text-2xl font-bold mb-6 text-center">Backend</h3>
+            <h3 className="text-2xl font-bold mb-6 text-center">DevOps</h3>
             <div className="space-y-5">
-              {backendSkills.map((skill) => (
+              {devOpsSkills.map((skill) => (
                 <div key={skill.name}>
                   <div className="flex justify-between mb-2">
                     <span className="font-medium">{skill.name}</span>
@@ -76,11 +77,11 @@ export default function Skills() {
             </div>
           </div>
           
-          {/* Tools Skills */}
+          {/* Web Skills */}
           <div>
-            <h3 className="text-2xl font-bold mb-6 text-center">Outils</h3>
+            <h3 className="text-2xl font-bold mb-6 text-center">Web</h3>
             <div className="space-y-5">
-              {toolsSkills.map((skill) => (
+              {webSkills.map((skill) => (
                 <div key={skill.name}>
                   <div className="flex justify-between mb-2">
                     <span className="font-medium">{skill.name}</span>

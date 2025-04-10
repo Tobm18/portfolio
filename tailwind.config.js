@@ -1,4 +1,5 @@
 //filepath: tailwind.config.js
+import scrollbar from 'tailwindcss-scrollbar';
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -30,6 +31,8 @@ module.exports = {
         'bounce-slow': 'bounce 3s linear infinite',
       }
     },
-  },
-  plugins: [],
-}
+  plugins: [
+    scrollbar,
+  ]
+  }
+};
