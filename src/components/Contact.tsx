@@ -46,7 +46,7 @@ export default function Contact() {
     } catch (error) {
       setSubmitStatus({
         success: false,
-        message: "Une erreur est survenue. Veuillez réessayer plus tard."
+        message: `Une erreur est survenue. Veuillez réessayer plus tard ${error}.`
       });
     } finally {
       setIsSubmitting(false);
