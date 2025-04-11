@@ -18,10 +18,47 @@ type Project = {
 
 export default function Projects() {
   const [activeTab, setActiveTab] = useState<'web' | 'reseaux' | 'ecriture'>('web');
-  const [currentPage, setCurrentPage] = useState(0); // 0 = couverture, 1, 2, 3... = pages internes
-  const [isFlipping, setIsFlipping] = useState(false);
-  const totalPages = 10; // Nombre total de pages dans le livre
   const bookRef = useRef<HTMLDivElement>(null);
+  
+  // États pour le nouveau système de livre
+  const [pageStates, setPageStates] = useState({
+    page1: false,
+    page2: false,
+    page3: false,
+    page4: false,
+    page5: false
+  });
+  
+  // Calculer si aucune page n'est retournée
+  const noFlippedPages = !Object.values(pageStates).some(state => state);
+  
+  // Calculer si toutes les pages sont retournées
+  const allPagesFlipped = Object.values(pageStates).every(state => state);
+  
+  // Logique pour déterminer la classe CSS à appliquer
+  const bookPositionClass = (noFlippedPages) ? 'no-flipped-page' : (allPagesFlipped ? 'all-flipped-page' : 'has-flipped-page');
+  
+  // Fonction pour retourner une page du livre
+  const togglePage = (page: 'page1' | 'page2' | 'page3' | 'page4' | 'page5') => {
+    const newPageStates = {
+      ...pageStates,
+      [page]: !pageStates[page]
+    };
+    
+    setPageStates(newPageStates);
+    
+    // Log pour le débogage
+    const noPages = !Object.values(newPageStates).some(state => state);
+    const allPages = Object.values(newPageStates).every(state => state);
+    
+    if (noPages) {
+      console.log("Aucune page retournée - livre centré (fermé)");
+    } else if (allPages) {
+      console.log("Toutes les pages retournées - livre centré (ouvert)");
+    } else {
+      console.log("Certaines pages retournées - livre décalé");
+    }
+  };
 
   const projects: Project[] = [
     // Projets Réseaux
@@ -129,24 +166,6 @@ export default function Projects() {
     },
   ];
 
-  // Fonction améliorée pour tourner les pages
-  const flipPage = (forward: boolean) => {
-    if (isFlipping) return;
-    
-    setIsFlipping(true);
-    
-    if (forward && currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    } else if (!forward && currentPage > 0) {
-      setCurrentPage(currentPage - 1);
-    }
-    
-    // Durée de l'animation de rotation
-    setTimeout(() => {
-      setIsFlipping(false);
-    }, 1000);
-  };
-
   // Filtrer les projets en fonction de l'onglet actif
   const filteredProjects = projects.filter(project => project.category === activeTab);
 
@@ -198,148 +217,61 @@ export default function Projects() {
         {/* Projets filtrés ou livre interactif */}
         {activeTab === 'ecriture' ? (
           <div className="flex flex-col items-center">
-            {/* Livre interactif 3D amélioré */}
-            <div 
-              className="relative max-w-4xl w-full mx-auto perspective-1200"
-              style={{ height: '500px' }}
-            >
-              <div 
-                ref={bookRef}
-                className="book-container absolute inset-0 flex justify-center items-center"
-              >
-                {/* Ajout d'un élément pour la reliure du livre */}
-                <div className={`book-spine ${currentPage > 0 ? 'book-opened' : ''}`}></div>
-                
-                {/* Couverture du livre avec effet 3D amélioré */}
-                <div 
-                  className={`book-cover absolute inset-0 bg-primary-800 rounded-lg shadow-2xl transform transition-all duration-1000 ${
-                    currentPage > 0 ? 'rotate-y-180 opacity-0' : 'z-50'
-                  }`}
-                  onClick={() => currentPage === 0 && flipPage(true)}
-                  style={{ 
-                    boxShadow: '0 10px 30px rgba(0,0,0,0.3)', 
-                    transformStyle: 'preserve-3d' 
-                  }}
-                >
-                  <div className="absolute inset-0 flex items-center justify-center p-8 bg-gradient-to-br from-primary-700 to-primary-900 rounded-lg book-cover-texture">
-                    <div className="text-center text-white transform translate-z-5">
-                      <h3 className="text-2xl font-bold mb-4 shadow-text">Guide de survie R&T</h3>
-                      <p className="mb-8">Cliquez pour ouvrir</p>
-                      <button 
-                        className="px-6 py-2 bg-white text-primary-900 rounded-full hover:bg-gray-100 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                      >
-                        Ouvrir
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Pages du livre avec effet 3D amélioré */}
-                {[...Array(totalPages)].map((_, i) => {
-                  const pageNumber = i + 1;
-                  const isEvenPage = pageNumber % 2 === 0;
-                  
-                  const isVisible = pageNumber <= currentPage;
-                  const isCurrentlyFlipping = pageNumber === currentPage || pageNumber === currentPage - 1;
-                  
-                  const isRightPage = isEvenPage;
-                  const isLeftPage = !isEvenPage;
-                  const isPageOpen = pageNumber <= currentPage;
-                  
-                  if (Math.abs(pageNumber - currentPage) > 3 && pageNumber !== 1) return null;
-                  
-                  return (
-                    <div 
-                      key={pageNumber}
-                      className={`absolute book-page ${isRightPage ? 'book-page-right' : 'book-page-left'} ${
-                        isCurrentlyFlipping && isFlipping ? (isPageOpen ? 'flipping-right' : 'flipping-left') : ''
-                      } ${isVisible ? '' : 'hidden'}`}
-                      style={{ 
-                        zIndex: isCurrentlyFlipping ? 100 : totalPages - Math.abs(pageNumber - currentPage),
-                        transform: isPageOpen && isRightPage ? 'rotateY(-180deg)' : 
-                                  !isPageOpen && isLeftPage ? 'rotateY(0deg)' : '',
-                      }}
-                      onClick={() => {
-                        if (isRightPage && pageNumber > currentPage) {
-                          flipPage(true);
-                        }
-                        else if (isLeftPage && pageNumber <= currentPage) {
-                          flipPage(false);
-                        }
-                      }}
-                    >
-                      <div className="absolute inset-0 rounded-lg overflow-hidden shadow-lg book-page-content">
-                        <div className={`absolute inset-0 ${isRightPage ? 'bg-white' : 'bg-gray-100'} dark:bg-gray-800 p-4 flex items-center justify-center`}>
-                          {/* Contenu de secours qui sera visible si l'image ne charge pas */}
-                          <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-600 dark:text-gray-300 p-4 z-0">
-                            <div className="text-center">
-                              <h3 className="text-lg font-semibold mb-2">Page {pageNumber}</h3>
-                              <p className="text-sm mb-4">Contenu de la page {pageNumber}</p>
-                            </div>
-                          </div>
-                          
-                          <Image 
-                            src={`/projects/book/page${pageNumber}.png`} 
-                            alt={`Page ${pageNumber}`}
-                            fill
-                            sizes="(max-width: 768px) 100vw, 80vw"
-                            className="object-cover z-10"
-                            priority={Math.abs(pageNumber - currentPage) < 2}
-                            onError={(e) => {
-                              const target = e.target as HTMLImageElement;
-                              target.style.display = 'none';
-                            }}
-                          />
-                          
-                          {/* Ajout d'un effet d'ombre sur la pliure */}
-                          <div className={`page-fold-shadow ${isCurrentlyFlipping && isFlipping ? 'active' : ''} ${isRightPage ? 'right' : 'left'}`}></div>
-                          <span className="absolute bottom-2 right-2 bg-white/70 dark:bg-gray-800/70 px-2 py-1 text-xs rounded z-20">
-                            {pageNumber}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
+            <div className="text-center mb-8">
+              <h3 className="text-2xl font-bold mb-4">Guide de survie R&T</h3>
+              <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+                Dans le cadre d&apos;un projet universitaire nous avons été amenés à écrire un &quot;Guide de survie&quot;. 
+                Ce projet qui se présente sous la forme d&apos;un livret est écrit avec une touche d&apos;humour 
+                et beaucoup de conseils pour les futurs étudiants en première année du BUT R&T.
+              </p>
             </div>
             
-            {/* Contrôles du livre */}
-            <div className="mt-8 flex justify-center items-center space-x-8">
-              <button 
-                onClick={() => flipPage(false)}
-                disabled={currentPage <= 0 || isFlipping}
-                className={`p-3 rounded-full bg-primary-600 hover:bg-primary-700 text-white transition-colors ${
-                  currentPage <= 0 || isFlipping ? 'opacity-50 cursor-not-allowed' : ''
-                }`}
+            <div className="book-container">
+              <p className="book-guide-text">Feuilletez le guide ➜</p>
+              <div 
+                className={`book ${bookPositionClass}`} 
+                ref={bookRef}
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-              
-              <div className="text-gray-900 dark:text-white font-medium">
-                Page {currentPage === 0 ? 'Couverture' : currentPage} / {totalPages}
+                <div className="pages">
+                  <div 
+                    className={pageStates.page1 ? "page1-flipped" : "page1-default"} 
+                    style={{ backgroundImage: `url(${pageStates.page1 ? '/projects/book/page2.png' : '/projects/book/page1.png'})` }}
+                  >
+                    <label onClick={() => togglePage('page1')}></label>
+                  </div>
+                  <div 
+                    className={pageStates.page2 ? "page2-flipped" : "page2-default"} 
+                    style={{ backgroundImage: `url(${pageStates.page2 ? '/projects/book/page4.png' : '/projects/book/page3.png'})` }}
+                  >
+                    <label onClick={() => togglePage('page2')}></label>
+                  </div>
+                  <div 
+                    className={pageStates.page3 ? "page3-flipped" : "page3-default"} 
+                    style={{ backgroundImage: `url(${pageStates.page3 ? '/projects/book/page6.png' : '/projects/book/page5.png'})` }}
+                  >
+                    <label onClick={() => togglePage('page3')}></label>
+                  </div>
+                  <div 
+                    className={pageStates.page4 ? "page4-flipped" : "page4-default"} 
+                    style={{ backgroundImage: `url(${pageStates.page4 ? '/projects/book/page8.png' : '/projects/book/page7.png'})` }}
+                  >
+                    <label onClick={() => togglePage('page4')}></label>
+                  </div>
+                  <div 
+                    className={pageStates.page5 ? "page5-flipped" : "page5-default"} 
+                    style={{ backgroundImage: `url(${pageStates.page5 ? '/projects/book/page10.png' : '/projects/book/page9.png'})` }}
+                  >
+                    <label onClick={() => togglePage('page5')}></label>
+                  </div>
+                </div>
               </div>
-              
-              <button 
-                onClick={() => flipPage(true)}
-                disabled={currentPage >= totalPages || isFlipping}
-                className={`p-3 rounded-full bg-primary-600 hover:bg-primary-700 text-white transition-colors ${
-                  currentPage >= totalPages || isFlipping ? 'opacity-50 cursor-not-allowed' : ''
-                }`}
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
             </div>
             
             {/* Télécharger le PDF */}
             <a 
-              href="/Guide_de_survie_R&T.pdf" 
+              href="/projects/Guide_de_survie_R&T.pdf" 
               download
-              className="mt-6 px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg flex items-center transition-colors"
+              className="mt-8 px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg flex items-center transition-colors"
             >
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -433,7 +365,7 @@ export default function Projects() {
                   <div 
                     key={project.id} 
                     className="card hover:scale-100 md:hover:scale-105 group flex-shrink-0 snap-start bg-white dark:bg-gray-900 shadow-[0px_0px_10px_3px_rgba(0,_0,_0,_0.1)] hover:shadow-[0px_0px_15px_5px_rgba(0,_0,_0,_0.15)] dark:shadow-[0px_0px_10px_3px_rgba(0,_0,_0,_0.3)] dark:hover:shadow-[0px_0px_15px_5px_rgba(0,_0,_0,_0.4)] transition-all duration-300" 
-                    style={{ width: "320px" }}
+                    style={{ width: "365px" }}
                   >
                     {/* Image du projet avec ratio 16:9 */}
                     <div className="relative aspect-[16/9] w-full overflow-hidden rounded-t-lg">
