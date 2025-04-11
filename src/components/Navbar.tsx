@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import ThemeToggle from './ThemeToggle';
 
 export default function Navbar() {
@@ -20,7 +21,13 @@ export default function Navbar() {
     <header className={`fixed top-0 left-0 w-full z-30 transition-all duration-300 ${sticky ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-lg' : ''}`}>
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link href="/">
-          <span className="text-2xl font-bold text-primary-600 dark:text-primary-500">TB</span>
+          <Image 
+            src="/logo.png" 
+            alt="Logo" 
+            width={32} 
+            height={32} 
+            className="h-8 w-auto dark:invert"
+          />
         </Link>
         
         {/* Desktop menu */}

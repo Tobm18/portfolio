@@ -7,7 +7,7 @@ export default function Hero() {
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
       <NetworkBackground />
       <Navbar />
-      <div className="container mx-auto px-4 pt-24 md:pt-32 grid md:grid-cols-2 gap-8 items-center">
+      <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
         <div className="text-center md:text-left">
           <div className="inline-block px-4 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 rounded-full text-sm font-medium mb-6">
             Réseaux & DevOps
