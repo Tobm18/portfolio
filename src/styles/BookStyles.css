@@ -4,7 +4,8 @@
   height: 100%;
   position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   padding: 2rem 0;
   max-width: 600px;
   margin: 0 auto;
@@ -198,6 +199,28 @@
   transition: transform 1s ease;
 }
 
+/* Styles responsives pour le livre */
+@media (max-width: 768px) {
+  .book {
+    width: 240px;
+    height: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .book {
+    width: 200px;
+    height: 270px;
+  }
+}
+
+@media (max-width: 375px) {
+  .book {
+    width: 180px;
+    height: 240px;
+  }
+}
+
 .book .pages,
 .book .pages > div {
   position: absolute;
@@ -255,15 +278,12 @@
 }
 
 .book-guide-text {
-  position: absolute;
-  left: -200px;
-  top: 50%;
-  width: 180px;
-  display: flex;
-  text-decoration: none;
-  transition: 0.5s;
+  position: relative;
+  margin: -2rem 0 2rem 0;
+  text-align: center;
+  width: 100%;
   color: rgb(0, 0, 0);
-  transform: translateY(-50%);
+  transition: 0.5s;
 }
 
 /* Adaptations des classes pour le dark mode */
@@ -346,6 +366,37 @@
 /* Décaler le livre vers la droite quand n'importe quelle page est flippée */
 .book.has-flipped-page {
   transform: translateX(145px); /* La moitié de la largeur du livre */
+}
+
+/* Ajuster le décalage sur les mobiles */
+@media (max-width: 768px) {
+  .book.has-flipped-page {
+    transform: translateX(110px)!important;
+  }
+  
+  .book.all-flipped-page {
+    transform: translateX(220px)!important;
+  }
+}
+
+@media (max-width: 480px) {
+  .book.has-flipped-page {
+    transform: translateX(90px)!important;
+  }
+  
+  .book.all-flipped-page {
+    transform: translateX(185px)!important;
+  }
+}
+
+@media (max-width: 375px) {
+  .book.has-flipped-page {
+    transform: translateX(80px)!important;
+  }
+  
+  .book.all-flipped-page {
+    transform: translateX(165px)!important;
+  }
 }
 
 /* Animation de retour à la position initiale quand toutes les pages sont fermées */

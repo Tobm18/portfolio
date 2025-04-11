@@ -227,7 +227,9 @@ export default function Projects() {
             </div>
             
             <div className="book-container">
-              <p className="book-guide-text">Feuilletez le guide ➜</p>
+              <p className="book-guide-text block text-center mb-2 italic text-sm">
+                Touchez les pages pour feuilleter
+              </p>
               <div 
                 className={`book ${bookPositionClass}`} 
                 ref={bookRef}

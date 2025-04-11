@@ -15,9 +15,16 @@ const NetworkBackground = () => {
     
     // Créer des points pour le réseau
     const points: { x: number; y: number; vx: number; vy: number; }[] = [];
-    const pointsCount = 80; // Nombre de points dans le réseau
+    const basePointCount = 100; // Nombre de base pour les écrans larges
     const connectionDistance = 200; // Distance maximale pour connecter deux points
     const mouseMoveRadius = 150; // Rayon d'influence du mouvement de la souris
+    
+    // Calculer le nombre de points en fonction de la taille de l'écran
+    const calculatePointCount = (width: number, height: number) => {
+      const screenArea = width * height;
+      const referenceArea = 1920 * 1080; // Écran de référence (Full HD)
+      return Math.max(20, Math.floor(basePointCount * (screenArea / referenceArea)));
+    };
     
     // Configuration de l'animation
     let animationFrameId: number;
@@ -27,6 +34,9 @@ const NetworkBackground = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
       
+      // Calculer le nombre de points adapté à la taille actuelle de l'écran
+      const pointsCount = calculatePointCount(canvas.width, canvas.height);
+
       // Réinitialiser les points quand le canvas est redimensionné
       points.length = 0;
       for (let i = 0; i < pointsCount; i++) {
