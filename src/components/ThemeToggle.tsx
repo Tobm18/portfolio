@@ -37,7 +37,7 @@ export default function ThemeToggle() {
   return (
     <button 
       onClick={toggleDarkMode}
-      className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-600"
+      className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-600"
       aria-label={darkMode ? 'Passer au mode clair' : 'Passer au mode sombre'}
     >
       {darkMode ? (

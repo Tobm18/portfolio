@@ -9,11 +9,11 @@ export default function Hero() {
       <Navbar />
       <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
         <div className="text-center md:text-left">
-          <div className="inline-block px-4 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 rounded-full text-sm font-medium mb-6">
+          <div className="inline-block px-4 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm font-medium mb-6">
             Réseaux & DevOps
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-            Bonjour, je suis <span className="text-primary-600 dark:text-primary-500">Tom BALLESTER</span>
+            Bonjour, je suis <span className="text-blue-600 dark:text-blue-500">Tom BALLESTER</span>
           </h1>
           <h2 className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-6">
             Étudiant en BUT-2 Réseaux & Télécommunications | Apprenti DevOps
@@ -37,8 +37,8 @@ export default function Hero() {
           </div>
         </div>
         <div className="hidden md:flex justify-center relative">
-          <div className="relative w-80 h-80 rounded-full overflow-hidden shadow-xl ring-4 ring-primary-500/20 dark:ring-primary-500/10">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary-400 to-primary-600 opacity-20 dark:opacity-10"></div>
+          <div className="relative w-80 h-80 rounded-full overflow-hidden shadow-xl ring-4 ring-blue-500/20 dark:ring-blue-500/10">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-blue-600 opacity-20 dark:opacity-10"></div>
             <Image 
               src="/profile-photo.jpg" 
               alt="Tom BALLESTER" 
@@ -53,7 +53,7 @@ export default function Hero() {
               <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path>
             </svg>
           </div>
-          <div className="absolute w-16 h-16 bg-primary-500 dark:bg-primary-600 rounded-full -bottom-2 left-24 flex items-center justify-center shadow-lg">
+          <div className="absolute w-16 h-16 bg-blue-500 dark:bg-blue-600 rounded-full -bottom-2 left-24 flex items-center justify-center shadow-lg">
             <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
               <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
             </svg>

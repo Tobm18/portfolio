@@ -174,7 +174,7 @@ export default function Projects() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Mes Projets</h2>
-          <div className="w-20 h-1 bg-primary-600 mx-auto mb-6"></div>
+          <div className="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
           <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-10">
             Découvrez quelques-uns de mes projets récents. Chaque projet est une occasion d&apos;apprendre et de me perfectionner.
           </p>
@@ -185,7 +185,7 @@ export default function Projects() {
               onClick={() => setActiveTab('web')}
               className={`px-6 py-2 rounded-full text-sm md:text-base font-medium transition-colors ${
                 activeTab === 'web' 
-                  ? 'bg-primary-600 text-white' 
+                  ? 'bg-blue-600 text-white' 
                   : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
               }`}
             >
@@ -195,7 +195,7 @@ export default function Projects() {
               onClick={() => setActiveTab('reseaux')}
               className={`px-6 py-2 rounded-full text-sm md:text-base font-medium transition-colors ${
                 activeTab === 'reseaux' 
-                  ? 'bg-primary-600 text-white' 
+                  ? 'bg-blue-600 text-white' 
                   : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
               }`}
             >
@@ -205,7 +205,7 @@ export default function Projects() {
               onClick={() => setActiveTab('ecriture')}
               className={`px-6 py-2 rounded-full text-sm md:text-base font-medium transition-colors ${
                 activeTab === 'ecriture' 
-                  ? 'bg-primary-600 text-white' 
+                  ? 'bg-blue-600 text-white' 
                   : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
               }`}
             >
@@ -273,7 +273,7 @@ export default function Projects() {
             <a 
               href="/projects/Guide_de_survie_R&T.pdf" 
               download
-              className="mt-8 px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-lg flex items-center transition-colors"
+              className="mt-8 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg flex items-center transition-colors"
             >
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -356,9 +356,9 @@ export default function Projects() {
             <div className="flex justify-between items-center px-2 mb-2">
               <p className="text-sm text-gray-500 dark:text-gray-400 italic">Faites défiler pour voir plus →</p>
               <div className="flex space-x-2">
-                <span className="w-2 h-2 rounded-full bg-primary-300 dark:bg-primary-700"></span>
-                <span className="w-2 h-2 rounded-full bg-primary-400 dark:bg-primary-600"></span>
-                <span className="w-2 h-2 rounded-full bg-primary-500 dark:bg-primary-500"></span>
+                <span className="w-2 h-2 rounded-full bg-blue-400 dark:bg-blue-600"></span>
+                <span className="w-2 h-2 rounded-full bg-blue-500 dark:bg-blue-500"></span>
+                <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400"></span>
               </div>
             </div>
             <div className="overflow-x-auto">
@@ -382,7 +382,7 @@ export default function Projects() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end">
                         <div className="p-4 w-full">
                           <div className="flex gap-2">
-                            <a href={project.demoLink} className="flex-1 px-3 py-2 bg-primary-600 text-white rounded text-sm text-center">
+                            <a href={project.demoLink} className="flex-1 px-3 py-2 bg-blue-600 text-white rounded text-sm text-center">
                               Démo
                             </a>
                             <a href={project.codeLink} className="flex-1 px-3 py-2 bg-gray-800 text-white rounded text-sm text-center">
@@ -398,7 +398,7 @@ export default function Projects() {
                       <p className="text-gray-600 dark:text-gray-400 mb-4">{project.description}</p>
                       <div className="flex flex-wrap gap-2">
                         {project.tags.map(tag => (
-                          <span key={tag} className="px-2 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-800 dark:text-primary-300 text-xs rounded">
+                          <span key={tag} className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 text-xs rounded">
                             {tag}
                           </span>
                         ))}

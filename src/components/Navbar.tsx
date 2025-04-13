@@ -64,10 +64,10 @@ export default function Navbar() {
         
         {/* Desktop menu */}
         <nav className="hidden md:flex items-center space-x-6">
-          <Link href="#about" className="text-gray-800 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-500 transition">À propos</Link>
-          <Link href="#projects" className="text-gray-800 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-500 transition">Projets</Link>
-          <Link href="#experience" className="text-gray-800 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-500 transition">Expérience</Link>
-          <Link href="#contact" className="text-gray-800 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-500 transition">Contact</Link>
+          <Link href="#about" className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-500 transition">À propos</Link>
+          <Link href="#projects" className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-500 transition">Projets</Link>
+          <Link href="#experience" className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-500 transition">Expérience</Link>
+          <Link href="#contact" className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-500 transition">Contact</Link>
           <ThemeToggle />
         </nav>
         
