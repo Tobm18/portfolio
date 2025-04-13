@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import "../styles/BookStyles.css"; 
 
@@ -19,6 +19,7 @@ type Project = {
 export default function Projects() {
   const [activeTab, setActiveTab] = useState<'web' | 'reseaux' | 'ecriture'>('web');
   const bookRef = useRef<HTMLDivElement>(null);
+  const [windowWidth, setWindowWidth] = useState(0);
   
   // États pour le nouveau système de livre
   const [pageStates, setPageStates] = useState({
@@ -28,6 +29,25 @@ export default function Projects() {
     page4: false,
     page5: false
   });
+  
+  // Effet pour détecter la largeur de la fenêtre côté client
+  useEffect(() => {
+    // Définir la largeur initiale
+    setWindowWidth(window.innerWidth);
+    
+    // Fonction pour mettre à jour la largeur lors du redimensionnement
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    
+    // Ajouter l'écouteur d'événement
+    window.addEventListener('resize', handleResize);
+    
+    // Nettoyer l'écouteur d'événement
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   
   // Calculer si aucune page n'est retournée
   const noFlippedPages = !Object.values(pageStates).some(state => state);
@@ -367,7 +387,7 @@ export default function Projects() {
                   <div 
                     key={project.id} 
                     className="card hover:scale-100 md:hover:scale-105 group flex-shrink-0 snap-start bg-white dark:bg-gray-900 shadow-[0px_0px_10px_3px_rgba(0,_0,_0,_0.1)] hover:shadow-[0px_0px_15px_5px_rgba(0,_0,_0,_0.15)] dark:shadow-[0px_0px_10px_3px_rgba(0,_0,_0,_0.3)] dark:hover:shadow-[0px_0px_15px_5px_rgba(0,_0,_0,_0.4)] transition-all duration-300" 
-                    style={{ width: "365px" }}
+                    style={{ width: windowWidth <= 768 ? "300px" : "365px" }}
                   >
                     {/* Image du projet avec ratio 16:9 */}
                     <div className="relative aspect-[16/9] w-full overflow-hidden rounded-t-lg">

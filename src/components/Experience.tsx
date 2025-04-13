@@ -48,16 +48,16 @@ export default function Experience() {
         </div>
         
         <div className="timeline relative max-w-4xl mx-auto">
-          {/* Ligne verticale */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 md:bg-gradient-to-b md:from-transparent md:via-blue-600/60 md:to-transparent dark:md:via-blue-600/60 bg-gray-300 dark:bg-gray-700 md:z-0"></div>
+          {/* Ligne verticale - centrée sur desktop, à gauche sur mobile */}
+            <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-gradient-to-b from-transparent via-blue-600/60 to-transparent dark:via-blue-600/60 z-0"></div>
           
           {/* Expériences */}
           <div className="timeline-container">
             {/* ProBTP */}
-            <div className="timeline-item mb-16 relative opacity-0 translate-y-5 transition-all duration-800 delay-300 group">
-              <div className="timeline-dot absolute left-1/2 md:left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 z-10 border-4 border-white dark:border-gray-800 transition-all duration-500 group-hover:bg-blue-700 group-hover:scale-110 md:translate-y-2"></div>
+            <div className="timeline-item mb-16 relative opacity-0 translate-y-5 transition-all duration-800 delay-50 group">
+              <div className="timeline-dot absolute left-4 md:left-1/2 transform -translate-x-[42%] md:-translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 z-10 border-4 border-white dark:border-gray-800 transition-all duration-500 group-hover:bg-blue-700 group-hover:scale-110 md:translate-y-2"></div>
               
-              <div className="timeline-content bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg md:w-5/12 md:ml-0 ml-8 md:mr-auto relative hover:-translate-y-1 transition-all duration-300 ease-in-out border-l-4 md:border-l-4 md:border-r-0 border-transparent hover:border-l-blue-600 md:hover:border-l-blue-600 hover:shadow-xl">
+              <div className="timeline-content bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg md:w-5/12 w-[calc(100%-40px)] ml-[40px] md:ml-0 md:mr-auto relative hover:-translate-y-1 transition-all duration-300 ease-in-out border-l-4 md:border-l-4 md:border-r-0 border-transparent hover:border-l-blue-600 md:hover:border-l-blue-600 hover:shadow-xl">
                 <div className="hidden md:block absolute right-[-16px] top-2 w-0 h-0 border-solid border-transparent border-l-[16px] border-l-white dark:border-l-gray-900 z-[1]"></div>
                 <div className="flex items-center mb-2">
                   <div className="bg-blue-100 dark:bg-blue-900 rounded-full p-2 mr-4">
@@ -83,10 +83,10 @@ export default function Experience() {
             </div>
             
             {/* IUT Nice Côte d'Azur */}
-            <div className="timeline-item mb-16 relative opacity-0 translate-y-5 transition-all duration-800 delay-300 group">
-              <div className="timeline-dot absolute left-1/2 md:left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 z-10 border-4 border-white dark:border-gray-800 transition-all duration-500 group-hover:bg-blue-700 group-hover:scale-110 md:translate-y-2"></div>
+            <div className="timeline-item mb-16 relative opacity-0 translate-y-5 transition-all duration-800 delay-50 group">
+              <div className="timeline-dot absolute left-4 md:left-1/2 transform -translate-x-[42%] md:-translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 z-10 border-4 border-white dark:border-gray-800 transition-all duration-500 group-hover:bg-blue-700 group-hover:scale-110 md:translate-y-2"></div>
               
-              <div className="timeline-content bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg md:w-5/12 md:ml-auto ml-8 md:mr-0 relative hover:-translate-y-1 transition-all duration-300 ease-in-out border-l-4 md:border-r-4 md:border-l-0 border-transparent hover:border-l-blue-600 md:hover:border-r-blue-600 hover:shadow-xl">
+              <div className="timeline-content bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg md:w-5/12 w-[calc(100%-40px)] ml-[40px] md:ml-auto md:mr-0 relative hover:-translate-y-1 transition-all duration-300 ease-in-out border-l-4 md:border-r-4 md:border-l-0 border-transparent hover:border-l-blue-600 md:hover:border-r-blue-600 hover:shadow-xl">
                 <div className="hidden md:block absolute left-[-16px] top-2 w-0 h-0 border-solid border-transparent border-r-[16px] border-r-white dark:border-r-gray-900 z-[1]"></div>
                 <div className="flex items-center mb-2">
                   <div className="bg-blue-100 dark:bg-blue-900 rounded-full p-2 mr-4">
@@ -111,10 +111,10 @@ export default function Experience() {
             </div>
             
             {/* Instant-System */}
-            <div className="timeline-item mb-16 relative opacity-0 translate-y-5 transition-all duration-800 delay-300 group">
-              <div className="timeline-dot absolute left-1/2 md:left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 z-10 border-4 border-white dark:border-gray-800 transition-all duration-500 group-hover:bg-blue-700 group-hover:scale-110 md:translate-y-2"></div>
+            <div className="timeline-item mb-16 relative opacity-0 translate-y-5 transition-all duration-800 delay-50 group">
+              <div className="timeline-dot absolute left-4 md:left-1/2 transform -translate-x-[42%] md:-translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 z-10 border-4 border-white dark:border-gray-800 transition-all duration-500 group-hover:bg-blue-700 group-hover:scale-110 md:translate-y-2"></div>
               
-              <div className="timeline-content bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg md:w-5/12 md:ml-0 ml-8 md:mr-auto relative hover:-translate-y-1 transition-all duration-300 ease-in-out border-l-4 md:border-l-4 md:border-r-0 border-transparent hover:border-l-blue-600 md:hover:border-l-blue-600 hover:shadow-xl">
+              <div className="timeline-content bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg md:w-5/12 w-[calc(100%-40px)] ml-[40px] md:ml-0 md:mr-auto relative hover:-translate-y-1 transition-all duration-300 ease-in-out border-l-4 md:border-l-4 md:border-r-0 border-transparent hover:border-l-blue-600 md:hover:border-l-blue-600 hover:shadow-xl">
                 <div className="hidden md:block absolute right-[-16px] top-2 w-0 h-0 border-solid border-transparent border-l-[16px] border-l-white dark:border-l-gray-900 z-[1]"></div>
                 <div className="flex items-center mb-2">
                   <div className="bg-blue-100 dark:bg-blue-900 rounded-full p-2 mr-4">
@@ -139,10 +139,10 @@ export default function Experience() {
             </div>
             
             {/* 2iTech Academy */}
-            <div className="timeline-item mb-16 relative opacity-0 translate-y-5 transition-all duration-800 delay-300 group">
-              <div className="timeline-dot absolute left-1/2 md:left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 z-10 border-4 border-white dark:border-gray-800 transition-all duration-500 group-hover:bg-blue-700 group-hover:scale-110 md:translate-y-2"></div>
+            <div className="timeline-item mb-16 relative opacity-0 translate-y-5 transition-all duration-800 delay-50 group">
+              <div className="timeline-dot absolute left-4 md:left-1/2 transform -translate-x-[42%] md:-translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 z-10 border-4 border-white dark:border-gray-800 transition-all duration-500 group-hover:bg-blue-700 group-hover:scale-110 md:translate-y-2"></div>
               
-              <div className="timeline-content bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg md:w-5/12 md:ml-auto ml-8 md:mr-0 relative hover:-translate-y-1 transition-all duration-300 ease-in-out border-l-4 md:border-r-4 md:border-l-0 border-transparent hover:border-l-blue-600 md:hover:border-r-blue-600 hover:shadow-xl">
+              <div className="timeline-content bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg md:w-5/12 w-[calc(100%-40px)] ml-[40px] md:ml-auto md:mr-0 relative hover:-translate-y-1 transition-all duration-300 ease-in-out border-l-4 md:border-r-4 md:border-l-0 border-transparent hover:border-l-blue-600 md:hover:border-r-blue-600 hover:shadow-xl">
                 <div className="hidden md:block absolute left-[-16px] top-2 w-0 h-0 border-solid border-transparent border-r-[16px] border-r-white dark:border-r-gray-900 z-[1]"></div>
                 <div className="flex items-center mb-2">
                   <div className="bg-blue-100 dark:bg-blue-900 rounded-full p-2 mr-4">
@@ -167,10 +167,10 @@ export default function Experience() {
             </div>
             
             {/* Lycée */}
-            <div className="timeline-item mb-16 relative opacity-0 translate-y-5 transition-all duration-800 delay-300 group">
-              <div className="timeline-dot absolute left-1/2 md:left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 z-10 border-4 border-white dark:border-gray-800 transition-all duration-500 group-hover:bg-blue-700 group-hover:scale-110 md:translate-y-2"></div>
+            <div className="timeline-item mb-16 relative opacity-0 translate-y-5 transition-all duration-800 delay-50 group">
+              <div className="timeline-dot absolute left-4 md:left-1/2 transform -translate-x-[42%] md:-translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 z-10 border-4 border-white dark:border-gray-800 transition-all duration-500 group-hover:bg-blue-700 group-hover:scale-110 md:translate-y-2"></div>
               
-              <div className="timeline-content bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg md:w-5/12 md:ml-0 ml-8 md:mr-auto relative hover:-translate-y-1 transition-all duration-300 ease-in-out border-l-4 md:border-l-4 md:border-r-0 border-transparent hover:border-l-blue-600 md:hover:border-l-blue-600 hover:shadow-xl">
+              <div className="timeline-content bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg md:w-5/12 w-[calc(100%-40px)] ml-[40px] md:ml-0 md:mr-auto relative hover:-translate-y-1 transition-all duration-300 ease-in-out border-l-4 md:border-l-4 md:border-r-0 border-transparent hover:border-l-blue-600 md:hover:border-l-blue-600 hover:shadow-xl">
                 <div className="hidden md:block absolute right-[-16px] top-2 w-0 h-0 border-solid border-transparent border-l-[16px] border-l-white dark:border-l-gray-900 z-[1]"></div>
                 <div className="flex items-center mb-2">
                   <div className="bg-blue-100 dark:bg-blue-900 rounded-full p-2 mr-4">
@@ -195,10 +195,10 @@ export default function Experience() {
             </div>
             
             {/* Mission Locale */}
-            <div className="timeline-item mb-16 relative opacity-0 translate-y-5 transition-all duration-800 delay-300 group">
-              <div className="timeline-dot absolute left-1/2 md:left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 z-10 border-4 border-white dark:border-gray-800 transition-all duration-500 group-hover:bg-blue-700 group-hover:scale-110 md:translate-y-2"></div>
+            <div className="timeline-item mb-16 relative opacity-0 translate-y-5 transition-all duration-800 delay-50 group">
+              <div className="timeline-dot absolute left-4 md:left-1/2 transform -translate-x-[42%] md:-translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 z-10 border-4 border-white dark:border-gray-800 transition-all duration-500 group-hover:bg-blue-700 group-hover:scale-110 md:translate-y-2"></div>
               
-              <div className="timeline-content bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg md:w-5/12 md:ml-auto ml-8 md:mr-0 relative hover:-translate-y-1 transition-all duration-300 ease-in-out border-l-4 md:border-r-4 md:border-l-0 border-transparent hover:border-l-blue-600 md:hover:border-r-blue-600 hover:shadow-xl">
+              <div className="timeline-content bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg md:w-5/12 w-[calc(100%-40px)] ml-[40px] md:ml-auto md:mr-0 relative hover:-translate-y-1 transition-all duration-300 ease-in-out border-l-4 md:border-r-4 md:border-l-0 border-transparent hover:border-l-blue-600 md:hover:border-r-blue-600 hover:shadow-xl">
                 <div className="hidden md:block absolute left-[-16px] top-2 w-0 h-0 border-solid border-transparent border-r-[16px] border-r-white dark:border-r-gray-900 z-[1]"></div>
                 <div className="flex items-center mb-2">
                   <div className="bg-blue-100 dark:bg-blue-900 rounded-full p-2 mr-4">
@@ -223,10 +223,10 @@ export default function Experience() {
             </div>
             
             {/* CSTB */}
-            <div className="timeline-item relative opacity-0 translate-y-5 transition-all duration-800 delay-300 group">
-              <div className="timeline-dot absolute left-1/2 md:left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 z-10 border-4 border-white dark:border-gray-800 transition-all duration-500 group-hover:bg-blue-700 group-hover:scale-110 md:translate-y-2"></div>
+            <div className="timeline-item relative opacity-0 translate-y-5 transition-all duration-800 delay-50 group">
+              <div className="timeline-dot absolute left-4 md:left-1/2 transform -translate-x-[42%] md:-translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 z-10 border-4 border-white dark:border-gray-800 transition-all duration-500 group-hover:bg-blue-700 group-hover:scale-110 md:translate-y-2"></div>
               
-              <div className="timeline-content bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg md:w-5/12 md:ml-0 ml-8 md:mr-auto relative hover:-translate-y-1 transition-all duration-300 ease-in-out border-l-4 md:border-l-4 md:border-r-0 border-transparent hover:border-l-blue-600 md:hover:border-l-blue-600 hover:shadow-xl">
+              <div className="timeline-content bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg md:w-5/12 w-[calc(100%-40px)] ml-[40px] md:ml-0 md:mr-auto relative hover:-translate-y-1 transition-all duration-300 ease-in-out border-l-4 md:border-l-4 md:border-r-0 border-transparent hover:border-l-blue-600 md:hover:border-l-blue-600 hover:shadow-xl">
                 <div className="hidden md:block absolute right-[-16px] top-2 w-0 h-0 border-solid border-transparent border-l-[16px] border-l-white dark:border-l-gray-900 z-[1]"></div>
                 <div className="flex items-center mb-2">
                   <div className="bg-blue-100 dark:bg-blue-900 rounded-full p-2 mr-4">
