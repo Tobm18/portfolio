@@ -5,6 +5,7 @@
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
+  --navbar-height: 72px; /* Valeur par défaut, sera modifiée par JS */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,7 +17,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: var(--navbar-height); /* Utiliser la variable définie dynamiquement */
 }
 
 body {
