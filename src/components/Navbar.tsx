@@ -66,7 +66,7 @@ export default function Navbar() {
         <nav className="hidden md:flex items-center space-x-6">
           <Link href="#about" className="text-gray-800 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-500 transition">À propos</Link>
           <Link href="#projects" className="text-gray-800 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-500 transition">Projets</Link>
-          <Link href="#skills" className="text-gray-800 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-500 transition">Compétences</Link>
+          <Link href="#experience" className="text-gray-800 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-500 transition">Expérience</Link>
           <Link href="#contact" className="text-gray-800 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-500 transition">Contact</Link>
           <ThemeToggle />
         </nav>
@@ -97,7 +97,7 @@ export default function Navbar() {
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
             <Link href="#about" className="text-gray-800 dark:text-gray-200" onClick={() => setIsOpen(false)}>À propos</Link>
             <Link href="#projects" className="text-gray-800 dark:text-gray-200" onClick={() => setIsOpen(false)}>Projets</Link>            
-            <Link href="#skills" className="text-gray-800 dark:text-gray-200" onClick={() => setIsOpen(false)}>Compétences</Link>
+            <Link href="#experience" className="text-gray-800 dark:text-gray-200" onClick={() => setIsOpen(false)}>Expérience</Link>
             <Link href="#contact" className="text-gray-800 dark:text-gray-200" onClick={() => setIsOpen(false)}>Contact</Link>
           </div>
         </div>

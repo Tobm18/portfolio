@@ -35,7 +35,7 @@ body {
   }
   
   .btn-secondary {
-    @apply px-6 py-3 bg-gray-200 hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 font-medium rounded-lg transition-colors;
+    @apply px-6 py-3 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-900 dark:text-white font-medium rounded-lg border border-gray-300 dark:border-gray-600 transition-colors;
   }
   
   .section-title {
@@ -61,7 +61,7 @@ body {
   pointer-events: none;
 }
 
-/* Style global des scrollbars */
+/* Style global des scrollbars - conservés car non gérés par Tailwind */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
