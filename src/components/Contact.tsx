@@ -89,7 +89,7 @@ export default function Contact() {
                 </div>
                 <div className="ml-4">
                   <h4 className="text-lg font-semibold mb-1">Téléphone</h4>
-                  <p>+33 7 83 99 58 07</p>
+                  <a href="tel:0783995007" className="text-blue-600 hover:underline">+33 7 83 99 58 07</a>
                 </div>
               </div>
               
@@ -102,7 +102,7 @@ export default function Contact() {
                 </div>
                 <div className="ml-4">
                   <h4 className="text-lg font-semibold mb-1">Localisation</h4>
-                  <p>Nice, France</p>
+                  <a href="https://maps.app.goo.gl/4Q2XcmKGQ3351wCn6" target='_blank' className="text-blue-600 hover:underline">Grasse, France</a>
                 </div>
               </div>
               

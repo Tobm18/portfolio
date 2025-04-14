@@ -9,10 +9,30 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [menuVisible, setMenuVisible] = useState(false);
   
   // Définir les hauteurs de la navbar
   const NAVBAR_HEIGHT_DESKTOP = 72; // en pixels
   const NAVBAR_HEIGHT_MOBILE = 64; // en pixels
+  
+  // Gérer l'ouverture/fermeture du menu avec animation
+  const toggleMenu = () => {
+    if (!isOpen) {
+      setIsOpen(true);
+      // Petit délai pour permettre au DOM de s'actualiser avant d'afficher l'animation
+      setTimeout(() => setMenuVisible(true), 10);
+    } else {
+      setMenuVisible(false);
+      // Attendre que l'animation de fermeture soit terminée avant de masquer complètement
+      setTimeout(() => setIsOpen(false), 300);
+    }
+  };
+  
+  // Gérer la fermeture du menu avec animation
+  const closeMenu = () => {
+    setMenuVisible(false);
+    setTimeout(() => setIsOpen(false), 300);
+  };
   
   useEffect(() => {
     // Vérifier si l'écran est en mode mobile
@@ -50,9 +70,13 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-30 transition-all duration-300 ${sticky ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-lg' : ''}`}>
+    <header className={`fixed top-0 left-0 w-full z-30 transition-all duration-300 ${sticky || isOpen ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-lg' : ''}`}>
       <div className={`container mx-auto px-4 flex justify-between items-center ${isMobile ? 'h-[64px]' : 'h-[72px]'}`}>
-        <Link href="/">
+        <Link 
+          href="#top" 
+          className="cursor-pointer" 
+          onClick={() => isOpen && closeMenu()}
+        >
           <Image 
             src="/logo.png" 
             alt="Logo" 
@@ -76,7 +100,7 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <button 
             className="ml-4 text-gray-800 dark:text-gray-200"
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={toggleMenu}
           >
             {isOpen ? (
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -91,14 +115,20 @@ export default function Navbar() {
         </div>
       </div>
       
-      {/* Mobile menu */}
+      {/* Mobile menu avec animation */}
       {isOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-900 shadow-lg">
+        <div 
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+            menuVisible 
+              ? 'max-h-60 transform translate-y-0' 
+              : 'max-h-0 transform -translate-y-5'
+          }`}
+        >
           <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-            <Link href="#about" className="text-gray-800 dark:text-gray-200" onClick={() => setIsOpen(false)}>À propos</Link>
-            <Link href="#projects" className="text-gray-800 dark:text-gray-200" onClick={() => setIsOpen(false)}>Projets</Link>            
-            <Link href="#experience" className="text-gray-800 dark:text-gray-200" onClick={() => setIsOpen(false)}>Expérience</Link>
-            <Link href="#contact" className="text-gray-800 dark:text-gray-200" onClick={() => setIsOpen(false)}>Contact</Link>
+            <Link href="#about" className="text-gray-800 dark:text-gray-200" onClick={closeMenu}>À propos</Link>
+            <Link href="#projects" className="text-gray-800 dark:text-gray-200" onClick={closeMenu}>Projets</Link>            
+            <Link href="#experience" className="text-gray-800 dark:text-gray-200" onClick={closeMenu}>Expérience</Link>
+            <Link href="#contact" className="text-gray-800 dark:text-gray-200" onClick={closeMenu}>Contact</Link>
           </div>
         </div>
       )}
