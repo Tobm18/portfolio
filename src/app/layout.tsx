@@ -20,6 +20,7 @@ export default function RootLayout({
   return (
     <html lang="fr" className="scroll-smooth">
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <script
           dangerouslySetInnerHTML={{
             __html: `

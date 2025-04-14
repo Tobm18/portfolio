@@ -5,38 +5,52 @@ import NetworkBackground from './NetworkBackground'
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-start pt-[var(--navbar-height)] md:pt-0 md:items-center overflow-hidden">
       <NetworkBackground />
       <Navbar />
-      <div className="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
+      <div className="container mx-auto px-4 grid md:grid-cols-2 gap-4 md:gap-8 items-center mt-8 md:mt-0">
         <div className="text-center md:text-left">
-          <div className="inline-block px-4 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm font-medium mb-6">
+          {/* Photo de profil mobile */}
+          <div className="md:hidden flex justify-center mb-4">
+            <div className="relative w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden shadow-xl ring-4 ring-blue-500/20 dark:ring-blue-500/10">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-blue-600 opacity-20 dark:opacity-10"></div>
+              <Image 
+                src="/profile-photo.jpg" 
+                alt="Tom BALLESTER" 
+                fill
+                sizes="(max-width: 768px) 100vw"
+                className="object-cover"
+                priority
+              />
+            </div>
+          </div>
+
+          <div className="inline-block px-4 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-xs md:text-sm font-medium mb-3 md:mb-6">
             Réseaux & DevOps
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+          
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-4">
             Bonjour, je suis <span className="text-blue-600 dark:text-blue-500">Tom BALLESTER</span>
           </h1>
-          <h2 className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-6">
+          
+          <h2 className="text-lg md:text-2xl text-gray-700 dark:text-gray-300 mb-3 md:mb-6">
             Étudiant en BUT-2 Réseaux & Télécommunications | Apprenti DevOps
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-lg mx-auto md:mx-0">
+          
+          <p className="text-sm md:text-lg text-gray-600 dark:text-gray-400 mb-4 md:mb-8 max-w-lg mx-auto md:mx-0">
             Passionné par les technologies des réseaux et la cybersécurité, je développe mes compétences en alternance chez ProBTP.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <a 
-              href="#contact" 
-              className="btn-primary"
-            >
+          
+          <div className="flex flex-col sm:flex-row gap-2 md:gap-4 justify-center md:justify-start">
+            <a href="#contact" className="btn-primary text-sm md:text-base px-4 py-2 md:px-6 md:py-3">
               Me contacter
             </a>
-            <a 
-              href="#projects" 
-              className="btn-secondary"
-            >
+            <a href="#projects" className="btn-secondary text-sm md:text-base px-4 py-2 md:px-6 md:py-3">
               Voir mes projets
             </a>
           </div>
         </div>
+
         <div className="hidden md:flex justify-center relative">
           <div className="relative w-80 h-80 rounded-full overflow-hidden shadow-xl ring-4 ring-blue-500/20 dark:ring-blue-500/10">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-blue-600 opacity-20 dark:opacity-10"></div>
@@ -63,9 +77,9 @@ export default function Hero() {
       </div>
       
       {/* Scroll indicator */}
-      <div className="absolute w-full bottom-8 flex justify-center animate-bounce-slow">
-        <Link href="#about">
-          <svg className="w-6 h-6 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <div className="absolute w-full bottom-6 md:bottom-8 flex justify-center animate-bounce-slow">
+        <Link href="#about" className='p-3 md:rounded-none md:!bg-transparent md:backdrop-filter-none bg-white/30 dark:bg-gray-800/30 backdrop-blur-sm rounded-full pointer-events-auto-2'>
+          <svg className="w-5 h-5 md:w-6 md:h-6 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
         </Link>
