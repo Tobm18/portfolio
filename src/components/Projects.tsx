@@ -108,8 +108,8 @@ export default function Projects() {
       description: "Création et maintenance du site web du club U.S. Ski et Montagne - Pegomas. Le site est réalisé avec PHP et Bootstrap, je le gère depuis 2021.",
       image: "/projects/web/skiclub.jpg",
       tags: ["PHP", "Bootstrap", "MySQL"],
-      demoLink: "https://skiclub-pegomas.fr/",
-      codeLink: "https://github.com/Tobm18",
+      demoLink: "https://skietmontagnepegomas.com/",
+      codeLink: undefined,
       category: "web"
     },
     {
@@ -118,8 +118,8 @@ export default function Projects() {
       description: "Création d'une application web pour Thales Alenia Space permettant de recenser et trier les bonnes pratiques lors des tests d'avionique.",
       image: "/projects/web/r2c.jpg",
       tags: ["PHP", "MySQL", "Bootstrap"],
-      demoLink: "#",
-      codeLink: "https://github.com/Tobm18",
+      demoLink: undefined,
+      codeLink: "https://github.com/ROAD-TO-CANNES/R2C",
       category: "web"
     },
     {
@@ -128,8 +128,8 @@ export default function Projects() {
       description: "Création d'un site vitrine dans le cadre d'un projet universitaire qui présente la plongée sous marine, une passion commune avec mes amis.",
       image: "/projects/web/plongee.jpg",
       tags: ["HTML", "CSS", "JavaScript"],
-      demoLink: "https://tballester.uca-project.online/plongee/",
-      codeLink: "https://github.com/Tobm18",
+      demoLink: "https://plongee.uca-project.online/",
+      codeLink: "https://github.com/Tobm18/Projet_site_web_plongee",
       category: "web"
     },
     {
@@ -138,8 +138,8 @@ export default function Projects() {
       description: "Application web pour la gestion de la bourse aux skis de Pégomas. Permet d'enregistrer les articles, traiter les ventes et gérer les retours.",
       image: "/projects/web/bourseskis.jpg",
       tags: ["React", "Node.js", "MongoDB"],
-      demoLink: "https://bourseauxskis-pegomas.fr/",
-      codeLink: "https://github.com/Tobm18",
+      demoLink: "https://bourse.skietmontagnepegomas.com/",
+      codeLink: undefined,
       category: "web"
     },
     {
@@ -151,38 +151,6 @@ export default function Projects() {
       demoLink: "https://tballester.uca-project.online/",
       codeLink: "https://github.com/Tobm18/portfolio",
       category: "web"
-    },
-    
-    // Projets d'Écriture
-    {
-      id: 9,
-      title: "Guide de Survie R&T",
-      description: "Un guide complet pour les étudiants en Réseaux et Télécommunications.",
-      image: "/projects/writing1.jpg",
-      tags: ["Documentation", "Pédagogie", "Technique"],
-      demoLink: "https://demo.example.com",
-      codeLink: "https://github.com/username/project",
-      category: "ecriture"
-    },
-    {
-      id: 10,
-      title: "Documentation Technique",
-      description: "Documentation détaillée pour l'utilisation des outils internes.",
-      image: "/projects/writing2.jpg",
-      tags: ["SharePoint", "Wiki", "Procédures"],
-      demoLink: "https://demo.example.com",
-      codeLink: "https://github.com/username/project",
-      category: "ecriture"
-    },
-    {
-      id: 11,
-      title: "Articles Techniques",
-      description: "Série d'articles sur les bonnes pratiques en DevOps et réseaux.",
-      image: "/projects/writing3.jpg",
-      tags: ["Blog", "Tutoriels", "Conseils"],
-      demoLink: "https://demo.example.com",
-      codeLink: "https://github.com/username/project",
-      category: "ecriture"
     },
   ];
 
@@ -402,12 +370,39 @@ export default function Projects() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end">
                         <div className="p-4 w-full">
                           <div className="flex gap-2">
-                            <a href={project.demoLink} className="flex-1 px-3 py-2 bg-blue-600 text-white rounded text-sm text-center">
-                              Démo
-                            </a>
-                            <a href={project.codeLink} className="flex-1 px-3 py-2 bg-gray-800 text-white rounded text-sm text-center">
-                              Code
-                            </a>
+                            {project.demoLink ? (
+                              <a 
+                                href={project.demoLink} 
+                                target='_blank' 
+                                className="flex-1 px-3 py-2 bg-blue-600 text-white rounded text-sm text-center hover:bg-blue-700 transition-colors"
+                              >
+                                Démo
+                              </a>
+                            ) : (
+                              <div 
+                                className="tooltip flex-1 px-3 py-2 bg-blue-600/50 text-white rounded text-sm text-center cursor-not-allowed"
+                                data-tooltip="La démo n'est pas disponible pour ce projet"
+                              >
+                                Démo
+                              </div>
+                            )}
+                            
+                            {project.codeLink ? (
+                              <a 
+                                href={project.codeLink} 
+                                target='_blank' 
+                                className="flex-1 px-3 py-2 bg-gray-800 text-white rounded text-sm text-center hover:bg-gray-700 transition-colors"
+                              >
+                                Code
+                              </a>
+                            ) : (
+                              <div 
+                                className="tooltip flex-1 px-3 py-2 bg-gray-800/50 text-white rounded text-sm text-center cursor-not-allowed"
+                                data-tooltip="Le code n'est pas accessible pour ce projet"
+                              >
+                                Code
+                              </div>
+                            )}
                           </div>
                         </div>
                       </div>
@@ -431,6 +426,34 @@ export default function Projects() {
           </>
         )}
       </div>
+
+      {/* Ajouter le style pour les tooltips à la fin du composant */}
+      <style jsx global>{`
+        .tooltip {
+          position: relative;
+        }
+        
+        .tooltip::after {
+          display: none;
+          content: attr(data-tooltip);
+          position: absolute;
+          bottom: 100%;
+          left: 50%;
+          transform: translateX(-50%);
+          margin-bottom: 5px;
+          padding: 5px 10px;
+          background-color: rgba(0, 0, 0, 0.8);
+          color: #fff;
+          border-radius: 4px;
+          white-space: nowrap;
+          font-size: 12px;
+          z-index: 1000;
+        }
+        
+        .tooltip:hover::after {
+          display: block;
+        }
+      `}</style>
     </section>
   );
 }
