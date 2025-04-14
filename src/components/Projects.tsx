@@ -190,7 +190,7 @@ export default function Projects() {
   const filteredProjects = projects.filter(project => project.category === activeTab);
 
   return (
-    <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-800">
+    <section id="projects" className="py-10 md:py-20 bg-gray-50 dark:bg-gray-800">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Mes Projets</h2>
