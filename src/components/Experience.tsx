@@ -173,8 +173,15 @@ export default function Experience() {
               <div className="timeline-content bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg md:w-5/12 w-[calc(100%-40px)] ml-[40px] md:ml-0 md:mr-auto relative hover:-translate-y-1 transition-all duration-300 ease-in-out border-l-4 md:border-l-4 md:border-r-0 border-transparent hover:border-l-blue-600 md:hover:border-l-blue-600 hover:shadow-xl">
                 <div className="hidden md:block absolute right-[-16px] top-2 w-0 h-0 border-solid border-transparent border-l-[16px] border-l-white dark:border-l-gray-900 z-[1]"></div>
                 <div className="flex items-center mb-2">
-                  <div className="bg-blue-100 dark:bg-blue-900 rounded-full p-2 mr-4">
-                    <Image src="/img/logo_lycee.png" alt="Lycée Alexis de Tocqueville" width={40} height={40} className="rounded-full bg-white" />
+                  <div className="bg-blue-100 dark:bg-blue-900 rounded-full p-2 mr-4 flex-shrink-0" style={{ width: '56px', height: '56px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Image 
+                      src="/img/logo_lycee.png" 
+                      alt="Lycée Alexis de Tocqueville" 
+                      width={40} 
+                      height={40} 
+                      className="rounded-full bg-white"
+                      style={{ width: '40px', height: '40px', objectFit: 'cover' }}
+                    />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold">Lycée Alexis de Tocqueville</h3>
@@ -201,8 +208,15 @@ export default function Experience() {
               <div className="timeline-content bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg md:w-5/12 w-[calc(100%-40px)] ml-[40px] md:ml-auto md:mr-0 relative hover:-translate-y-1 transition-all duration-300 ease-in-out border-l-4 md:border-r-4 md:border-l-0 border-transparent hover:border-l-blue-600 md:hover:border-r-blue-600 hover:shadow-xl">
                 <div className="hidden md:block absolute left-[-16px] top-2 w-0 h-0 border-solid border-transparent border-r-[16px] border-r-white dark:border-r-gray-900 z-[1]"></div>
                 <div className="flex items-center mb-2">
-                  <div className="bg-blue-100 dark:bg-blue-900 rounded-full p-2 mr-4">
-                    <Image src="/img/logo_mlpg.png" alt="Mission Locale" width={40} height={40} className="rounded-full bg-white" />
+                  <div className="bg-blue-100 dark:bg-blue-900 rounded-full p-2 mr-4 flex-shrink-0" style={{ width: '56px', height: '56px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Image 
+                      src="/img/logo_mlpg.png" 
+                      alt="Mission Locale" 
+                      width={40} 
+                      height={40} 
+                      className="rounded-full bg-white"
+                      style={{ width: '40px', height: '40px', objectFit: 'cover' }}
+                    />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold">Mission Locale du Pays de Grasse</h3>
