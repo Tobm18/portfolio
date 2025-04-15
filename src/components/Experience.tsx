@@ -71,7 +71,7 @@ export default function Experience() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
                       </span>
-                      09/2023 - Aujourd&apos;hui
+                      <span suppressHydrationWarning>Sept. 2023 → Aujourd&apos;hui</span>
                     </p>
                   </div>
                 </div>
@@ -100,7 +100,7 @@ export default function Experience() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
                       </span>
-                      09/2023 - Aujourd&apos;hui
+                      <span suppressHydrationWarning>Sept. 2022 → Aujourd&apos;hui</span>
                     </p>
                   </div>
                 </div>
@@ -128,7 +128,7 @@ export default function Experience() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
                       </span>
-                      10/2022 - 08/2023
+                      <span suppressHydrationWarning>Oct. 2022 → Août 2023</span>
                     </p>
                   </div>
                 </div>
@@ -156,7 +156,7 @@ export default function Experience() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
                       </span>
-                      10/2022 - 08/2023
+                      <span suppressHydrationWarning>Oct. 2022 → Août 2023</span>
                     </p>
                   </div>
                 </div>
@@ -184,7 +184,7 @@ export default function Experience() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
                       </span>
-                      06/2022
+                      <span suppressHydrationWarning>Juin 2022</span>
                     </p>
                   </div>
                 </div>
@@ -212,7 +212,7 @@ export default function Experience() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
                       </span>
-                      02/2022
+                      <span suppressHydrationWarning>Fév. 2022</span>
                     </p>
                   </div>
                 </div>
@@ -240,7 +240,7 @@ export default function Experience() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
                       </span>
-                      12/2018
+                      <span suppressHydrationWarning>Déc. 2018</span>
                     </p>
                   </div>
                 </div>

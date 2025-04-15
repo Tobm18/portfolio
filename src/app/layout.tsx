@@ -21,42 +21,46 @@ export default function RootLayout({
     <html lang="fr" className="scroll-smooth">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta name="format-detection" content="telephone=no, date=no, address=no, email=no, url=no" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              (function() {
+              function applyTheme() {
                 // On first load, check user preference
                 function getInitialTheme() {
                   const persistedTheme = localStorage.getItem('theme');
                   const hasPersistedTheme = typeof persistedTheme === 'string';
 
-                  // If the user has explicitly chosen light or dark,
-                  // let's use it. Otherwise, let's check the media query
+                  // Si l'utilisateur a déjà fait un choix explicite, on le respecte
                   if (hasPersistedTheme) {
                     return persistedTheme;
                   }
 
-                  // Check if media query matches
-                  const mql = window.matchMedia('(prefers-color-scheme: dark)');
-                  const hasMediaQueryPreference = typeof mql.matches === 'boolean';
-
-                  if (hasMediaQueryPreference) {
-                    return mql.matches ? 'dark' : 'light';
-                  }
-
-                  // default to 'light'
-                  return 'light';
+                  // Premier chargement : on utilise le mode sombre par défaut
+                  return 'dark';
                 }
 
                 const theme = getInitialTheme();
 
-                // add or remove the 'dark' class based on if the theme is 'dark'
+                // Appliquer le thème après le rendu initial
                 if (theme === 'dark') {
                   document.documentElement.classList.add('dark');
                 } else {
                   document.documentElement.classList.remove('dark');
                 }
-              })();
+
+                // Sauvegarder le thème par défaut au premier chargement
+                if (!localStorage.getItem('theme')) {
+                  localStorage.setItem('theme', 'dark');
+                }
+              }
+
+              // Exécuter après l'hydratation
+              if (window.requestIdleCallback) {
+                window.requestIdleCallback(applyTheme);
+              } else {
+                window.setTimeout(applyTheme, 100);
+              }
             `,
           }}
         />
