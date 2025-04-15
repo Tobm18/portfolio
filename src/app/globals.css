@@ -92,3 +92,45 @@ body {
 .dark ::-webkit-scrollbar-thumb:hover {
   background-color: rgba(107, 114, 128, 1);
 }
+
+/* Style pour le tooltip du composant Projects */
+
+.global-tooltip {
+  position: fixed;
+  display: none;
+  padding: 5px 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 4px;
+  white-space: nowrap;
+  font-size: 12px;
+  z-index: 10000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+  transform: translateZ(0);
+  max-width: 90vw; 
+  word-wrap: break-word; 
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .global-tooltip {
+    font-size: 11px;
+    padding: 4px 8px;
+    white-space: normal; 
+    max-width: 80vw;
+  }
+}
+
+.global-tooltip.visible {
+  display: block;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+  overflow-y: visible;
+}
+
+.flex-shrink-0 {
+  overflow: visible;
+}

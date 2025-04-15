@@ -30,6 +30,87 @@ export default function Projects() {
     page5: false
   });
   
+  // Référence pour le tooltip global
+  const tooltipRef = useRef<HTMLDivElement>(null);
+  
+  // State pour contrôler le contenu et la visibilité du tooltip
+  const [tooltip, setTooltip] = useState({
+    visible: false,
+    text: '',
+    x: 0,
+    y: 0
+  });
+
+  // Fonction pour gérer l'affichage du tooltip avec position ajustée
+  const handleShowTooltip = (e: React.MouseEvent, text: string) => {
+    // Récupérer les dimensions de la fenêtre
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
+    
+    // Position initiale du curseur
+    let x = e.clientX + 10;
+    let y = e.clientY - 30;
+    
+    // Estimer la largeur du tooltip (on peut ajuster ces valeurs)
+    const estimatedTooltipWidth = text.length * 7; // ~7px par caractère
+    const estimatedTooltipHeight = 30; // hauteur approximative
+    
+    // Ajuster horizontalement si nécessaire
+    if (x + estimatedTooltipWidth > windowWidth - 20) {
+      x = Math.max(10, windowWidth - estimatedTooltipWidth - 20);
+    }
+    
+    // Ajuster verticalement si nécessaire
+    if (y < 10) {
+      y = e.clientY + 20; // Afficher en dessous du curseur si trop haut
+    } else if (y + estimatedTooltipHeight > windowHeight - 10) {
+      y = windowHeight - estimatedTooltipHeight - 10;
+    }
+    
+    setTooltip({
+      visible: true,
+      text,
+      x,
+      y
+    });
+  };
+
+  // Fonction pour masquer le tooltip
+  const handleHideTooltip = () => {
+    setTooltip(prev => ({ ...prev, visible: false }));
+  };
+  
+  // Fonction pour suivre la position de la souris quand le tooltip est visible
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (tooltip.visible) {
+      // Appliquer la même logique d'ajustement
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
+      
+      let x = e.clientX + 10;
+      let y = e.clientY - 30;
+      
+      const estimatedTooltipWidth = tooltip.text.length * 7;
+      const estimatedTooltipHeight = 30;
+      
+      if (x + estimatedTooltipWidth > windowWidth - 20) {
+        x = Math.max(10, windowWidth - estimatedTooltipWidth - 20);
+      }
+      
+      if (y < 10) {
+        y = e.clientY + 20;
+      } else if (y + estimatedTooltipHeight > windowHeight - 10) {
+        y = windowHeight - estimatedTooltipHeight - 10;
+      }
+      
+      setTooltip(prev => ({
+        ...prev,
+        x,
+        y
+      }));
+    }
+  };
+
   // Effet pour détecter la largeur de la fenêtre côté client
   useEffect(() => {
     // Définir la largeur initiale
@@ -48,6 +129,24 @@ export default function Projects() {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+  
+  // Effet pour gérer les événements tactiles et masquer le tooltip
+  useEffect(() => {
+    // Fonction pour masquer le tooltip lors d'un toucher sur l'écran
+    const handleTouchStart = () => {
+      if (tooltip.visible) {
+        handleHideTooltip();
+      }
+    };
+    
+    // Ajouter l'écouteur d'événement tactile au document
+    document.addEventListener('touchstart', handleTouchStart);
+    
+    // Nettoyer l'écouteur d'événement
+    return () => {
+      document.removeEventListener('touchstart', handleTouchStart);
+    };
+  }, [tooltip.visible]); // Dépend de l'état de visibilité du tooltip
   
   // Calculer si aucune page n'est retournée
   const noFlippedPages = !Object.values(pageStates).some(state => state);
@@ -107,7 +206,7 @@ export default function Projects() {
       title: "Ski Club Pégomas",
       description: "Création et maintenance du site web du club U.S. Ski et Montagne - Pegomas. Le site est réalisé avec PHP et Bootstrap, je le gère depuis 2021.",
       image: "/projects/web/skiclub.jpg",
-      tags: ["PHP", "Bootstrap", "MySQL"],
+      tags: ["PHP", "Bootstrap", "JavaScript"],
       demoLink: "https://skietmontagnepegomas.com/",
       codeLink: undefined,
       category: "web"
@@ -117,13 +216,33 @@ export default function Projects() {
       title: "R2C - Thales Alenia Space",
       description: "Création d'une application web pour Thales Alenia Space permettant de recenser et trier les bonnes pratiques lors des tests d'avionique.",
       image: "/projects/web/r2c.jpg",
-      tags: ["PHP", "MySQL", "Bootstrap"],
+      tags: ["PHP", "MySQL", "JavaScript"],
       demoLink: undefined,
       codeLink: "https://github.com/ROAD-TO-CANNES/R2C",
       category: "web"
     },
     {
       id: 6,
+      title: "Bourse aux Skis",
+      description: "Application web pour la gestion de la bourse aux skis de Pégomas. Permet d'enregistrer les articles, traiter les ventes et gérer les retours.",
+      image: "/projects/web/bourseskis.jpg",
+      tags: ["React", "Express.js", "MongoDB"],
+      demoLink: "https://bourse.skietmontagnepegomas.com/",
+      codeLink: undefined,
+      category: "web"
+    },
+    {
+      id: 7,
+      title: "Mon Portfolio",
+      description: "Ce portfolio, à la base réalisé dans le cadre d'un projet universitaire, a pour objectif de présenter mes compétences, mes créations et mon parcours.",
+      image: "/projects/web/portfolio.jpg",
+      tags: ["React", "Next.js", "Tailwind CSS"],
+      demoLink: "https://tballester.uca-project.online/",
+      codeLink: "https://github.com/Tobm18/portfolio",
+      category: "web"
+    },
+    {
+      id: 8,
       title: "La Plongée",
       description: "Création d'un site vitrine dans le cadre d'un projet universitaire qui présente la plongée sous marine, une passion commune avec mes amis.",
       image: "/projects/web/plongee.jpg",
@@ -132,33 +251,25 @@ export default function Projects() {
       codeLink: "https://github.com/Tobm18/Projet_site_web_plongee",
       category: "web"
     },
-    {
-      id: 7,
-      title: "Bourse aux Skis",
-      description: "Application web pour la gestion de la bourse aux skis de Pégomas. Permet d'enregistrer les articles, traiter les ventes et gérer les retours.",
-      image: "/projects/web/bourseskis.jpg",
-      tags: ["React", "Node.js", "MongoDB"],
-      demoLink: "https://bourse.skietmontagnepegomas.com/",
-      codeLink: undefined,
-      category: "web"
-    },
-    {
-      id: 8,
-      title: "Premier Portfolio",
-      description: "Création de mon site personnel dans le cadre d'un projet universitaire. Ce portfolio présente mes compétences, mes créations et mon parcours.",
-      image: "/projects/web/portfolio.jpg",
-      tags: ["HTML", "CSS", "JavaScript"],
-      demoLink: "https://tballester.uca-project.online/",
-      codeLink: "https://github.com/Tobm18/portfolio",
-      category: "web"
-    },
   ];
 
   // Filtrer les projets en fonction de l'onglet actif
   const filteredProjects = projects.filter(project => project.category === activeTab);
 
   return (
-    <section id="projects" className="py-10 md:py-20 bg-gray-50 dark:bg-gray-800">
+    <section id="projects" className="py-10 md:py-20 bg-gray-50 dark:bg-gray-800" onMouseMove={handleMouseMove}>
+      {/* Tooltip global */}
+      <div 
+        ref={tooltipRef}
+        className={`global-tooltip ${tooltip.visible ? 'visible' : ''}`}
+        style={{ 
+          left: `${tooltip.x + 10}px`, 
+          top: `${tooltip.y - 30}px` 
+        }}
+      >
+        {tooltip.text}
+      </div>
+
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Mes Projets</h2>
@@ -380,8 +491,9 @@ export default function Projects() {
                               </a>
                             ) : (
                               <div 
-                                className="tooltip flex-1 px-3 py-2 bg-blue-600/50 text-white rounded text-sm text-center cursor-not-allowed"
-                                data-tooltip="La démo n'est pas disponible pour ce projet"
+                                className="flex-1 px-3 py-2 bg-blue-600/50 text-white rounded text-sm text-center cursor-not-allowed"
+                                onMouseEnter={(e) => handleShowTooltip(e, "La démo n'est pas disponible pour ce projet")}
+                                onMouseLeave={handleHideTooltip}
                               >
                                 Démo
                               </div>
@@ -397,8 +509,9 @@ export default function Projects() {
                               </a>
                             ) : (
                               <div 
-                                className="tooltip flex-1 px-3 py-2 bg-gray-800/50 text-white rounded text-sm text-center cursor-not-allowed"
-                                data-tooltip="Le code n'est pas accessible pour ce projet"
+                                className="flex-1 px-3 py-2 bg-gray-800/50 text-white rounded text-sm text-center cursor-not-allowed"
+                                onMouseEnter={(e) => handleShowTooltip(e, "Le code n'est pas accessible pour ce projet")}
+                                onMouseLeave={handleHideTooltip}
                               >
                                 Code
                               </div>
@@ -426,34 +539,6 @@ export default function Projects() {
           </>
         )}
       </div>
-
-      {/* Ajouter le style pour les tooltips à la fin du composant */}
-      <style jsx global>{`
-        .tooltip {
-          position: relative;
-        }
-        
-        .tooltip::after {
-          display: none;
-          content: attr(data-tooltip);
-          position: absolute;
-          bottom: 100%;
-          left: 50%;
-          transform: translateX(-50%);
-          margin-bottom: 5px;
-          padding: 5px 10px;
-          background-color: rgba(0, 0, 0, 0.8);
-          color: #fff;
-          border-radius: 4px;
-          white-space: nowrap;
-          font-size: 12px;
-          z-index: 1000;
-        }
-        
-        .tooltip:hover::after {
-          display: block;
-        }
-      `}</style>
     </section>
   );
 }
