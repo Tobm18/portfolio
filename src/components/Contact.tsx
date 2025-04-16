@@ -24,29 +24,30 @@ export default function Contact() {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Example form submission logic (replace with your actual implementation)
+    setSubmitStatus(null);
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // For now, just show success
-      setSubmitStatus({
-        success: true,
-        message: "Merci ! Votre message a été envoyé avec succès."
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
       });
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
+      const data = await response.json();
+      if (response.ok) {
+        setSubmitStatus({
+          success: true,
+          message: data.message || "Merci ! Votre message a été envoyé avec succès."
+        });
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        setSubmitStatus({
+          success: false,
+          message: data.message || "Une erreur est survenue. Veuillez réessayer plus tard."
+        });
+      }
     } catch (error) {
       setSubmitStatus({
         success: false,
-        message: `Une erreur est survenue. Veuillez réessayer plus tard ${error}.`
+        message: `Une erreur est survenue. Veuillez réessayer plus tard. ${error}`
       });
     } finally {
       setIsSubmitting(false);
