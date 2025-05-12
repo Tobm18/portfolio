@@ -187,16 +187,16 @@ export default function Projects() {
       description: "Réalisation d'un réseau d'entreprise sur packet tracer dans le cadre d'un projet à l'université. Ce projet en autonomie étalé sur 2 mois, avait pour objectif de construire le réseau d'une entreprise type PME, en utilisant plusieurs technologies dont un ASA Cisco pour toucher au concept de firewall, une DMZ, un serveur DHCP, DNS, différents VLANs, switch de niveau 3 et protocole de routage dynamique EIGRP.",
       image: "/projects/network/sae21.jpg",
       tags: ["Packet Tracer", "Firewall", "DMZ", "DHCP", "DNS", "VLANs"],
-      pdfLink: "/SAE-21_PDF.pdf",
+      pdfLink: "/projects/network/SAE-21_Consigne.pdf",
       category: "reseaux"
     },
     {
       id: 2,
       title: "SAE-33: Infrastructure réseau complexe",
-      description: "Réalisation d'un réseau d'entreprise avancé sur packet tracer dans le cadre d'un projet universitaire. Ce projet en autonomie étalé sur 2 mois, visait à approfondir mes compétences en construisant une infrastructure réseau complète pour une PME, avec implémentation de sécurité avancée via ASA Cisco, segmentation réseau en zones distinctes, services centralisés et routage dynamique EIGRP optimisé.",
+      description: "Réalisation d'une infrastructure réseau d'entreprise sécurisée, modélisée sur Packet Tracer puis déployée physiquement dans le cadre d'un projet universitaire. Ce travail autonome de deux mois et demis m'a permis de développer une expertise en conception réseau et implémentation de mécanismes de protection, notamment le DHCP snooping et d'autres contre-mesures avancées contre les attaques réseau courantes.",
       image: "/projects/network/sae33.jpg",
-      tags: ["Packet Tracer", "ASA Cisco", "Sécurité Réseau", "Routage", "EIGRP", "VLANs"],
-      pdfLink: "/SAE-21_PDF.pdf",
+      tags: ["Packet Tracer", "Sécurité", "Infrastructure", "Segmentation", "Routage", "VLANs"],
+      pdfLink: "/projects/network/SAE-33_Consigne.pdf",
       category: "reseaux"
     },
     
