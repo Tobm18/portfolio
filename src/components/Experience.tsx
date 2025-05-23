@@ -4,274 +4,162 @@ import { useEffect } from 'react';
 import Image from 'next/image';
 
 export default function Experience() {
-  // Fonction pour animer les éléments de la timeline lorsqu'ils sont visibles
   useEffect(() => {
-    const timelineItems = document.querySelectorAll(".timeline-item");
+    // Animation pour faire apparaître les cartes d'expérience
+    const experienceCards = document.querySelectorAll(".experience-card");
     
     const handleScroll = () => {
-      timelineItems.forEach(item => {
-        const rect = item.getBoundingClientRect();
-        const isVisible = 
-          rect.top >= 0 &&
-          rect.left >= 0 &&
-          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-          rect.right <= (window.innerWidth || document.documentElement.clientWidth);
+      experienceCards.forEach((card, index) => {
+        const rect = card.getBoundingClientRect();
+        const isVisible = rect.top >= 0 &&
+          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight);
         
         if (isVisible) {
-          item.classList.add("in-view");
+          setTimeout(() => {
+            card.classList.add("in-view");
+          }, index * 200); // Ajouter un délai progressif pour chaque carte
         }
       });
     };
     
-    // Vérifier au chargement, au défilement et au redimensionnement
-    window.addEventListener("load", handleScroll);
-    window.addEventListener("resize", handleScroll);
+    // Vérifier au chargement et au défilement
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     
-    // Nettoyage des écouteurs d'événements
     return () => {
-      window.removeEventListener("load", handleScroll);
-      window.removeEventListener("resize", handleScroll);
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
-    <section id="experience" className="py-10 md:py-20 bg-gray-50 dark:bg-gray-800">
+    <section id="experience" className="py-10 md:py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Mon Parcours</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Mon Expérience Professionnelle</h2>
           <div className="w-20 h-1 bg-blue-600 mx-auto mb-6"></div>
           <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-            Mon parcours professionnel et académique au fil du temps.
+            Découvrez mon expertise et mes compétences techniques développées au fil de mes expériences.
           </p>
         </div>
         
-        <div className="timeline relative max-w-4xl mx-auto">
-          {/* Ligne verticale - centrée sur desktop, à gauche sur mobile */}
-            <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-gradient-to-b from-transparent via-blue-600/60 to-transparent dark:via-blue-600/60 z-0"></div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
+          {/* ProBTP - Expérience détaillée */}
+          <div className="experience-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 opacity-0 translate-y-5">
+            <div className="flex items-center mb-4">
+              <div className="bg-blue-100 dark:bg-blue-900 rounded-full p-2 mr-4">
+                <Image src="/img/pro_btp.avif" alt="ProBTP" width={40} height={40} className="rounded-full bg-white" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold">DevOps chez ProBTP</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Septembre 2023 - Présent</p>
+              </div>
+            </div>
+            <div className="space-y-3">
+              <p className="text-gray-700 dark:text-gray-300">
+                En tant qu&apos;apprenti DevOps chez ProBTP, j&apos;interviens sur plusieurs domaines essentiels :
+              </p>
+              <ul className="list-disc pl-5 text-gray-700 dark:text-gray-300 space-y-2">
+                <li>Migration des wikis d&apos;entreprise vers SharePoint avec automatisation des processus</li>
+                <li>Développement d&apos;outils internes pour la gestion et l&apos;optimisation des ressources</li>
+                <li>Mise en place de systèmes de surveillance des licences logicielles</li>
+                <li>Participation aux cycles CI/CD et à l&apos;amélioration continue des processus</li>
+              </ul>
+            </div>
+          </div>
           
-          {/* Expériences */}
-          <div className="timeline-container">
-            {/* ProBTP */}
-            <div className="timeline-item mb-16 relative opacity-0 translate-y-5 transition-all duration-800 delay-50 group">
-              <div className="timeline-dot absolute left-4 md:left-1/2 transform -translate-x-[42%] md:-translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 z-10 border-4 border-white dark:border-gray-800 transition-all duration-500 group-hover:bg-blue-700 group-hover:scale-110 md:translate-y-2"></div>
-              
-              <div className="timeline-content bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg md:w-5/12 w-[calc(100%-40px)] ml-[40px] md:ml-0 md:mr-auto relative hover:-translate-y-1 transition-all duration-300 ease-in-out border-l-4 md:border-l-4 md:border-r-0 border-transparent hover:border-l-blue-600 md:hover:border-l-blue-600 hover:shadow-xl">
-                <div className="hidden md:block absolute right-[-16px] top-2 w-0 h-0 border-solid border-transparent border-l-[16px] border-l-white dark:border-l-gray-900 z-[1]"></div>
-                <div className="flex items-center mb-2">
-                  <div className="bg-blue-100 dark:bg-blue-900 rounded-full p-2 mr-4">
-                    <Image src="/img/pro_btp.avif" alt="ProBTP" width={40} height={40} className="rounded-full bg-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold">ProBTP</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 pl-5 inline-flex items-center relative">
-                      <span className="absolute left-0 w-3.5 h-3.5">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-full h-full">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                      </span>
-                      <span suppressHydrationWarning>Sept. 2023 → Aujourd&apos;hui</span>
-                    </p>
-                  </div>
-                </div>
-                <p className="text-gray-700 dark:text-gray-300">
-                  Apprenti DevOps en contrat d&apos;apprentissage chez ProBTP à Cagnes-sur-Mer. 
-                  Mes missions incluent la migration des wikis vers SharePoint, la surveillance des licences logicielles et le développement d&apos;outils internes.
-                </p>
+          {/* Instant-System - Expérience détaillée */}
+          <div className="experience-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 opacity-0 translate-y-5">
+            <div className="flex items-center mb-4">
+              <div className="bg-blue-100 dark:bg-blue-900 rounded-full p-2 mr-4">
+                <Image src="/img/logo_Instant_system.png" alt="Instant-System" width={40} height={40} className="rounded-full bg-white" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold">Technicien Informatique chez Instant-System</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Octobre 2022 - Août 2023</p>
               </div>
             </div>
-            
-            {/* IUT Nice Côte d'Azur */}
-            <div className="timeline-item mb-16 relative opacity-0 translate-y-5 transition-all duration-800 delay-50 group">
-              <div className="timeline-dot absolute left-4 md:left-1/2 transform -translate-x-[42%] md:-translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 z-10 border-4 border-white dark:border-gray-800 transition-all duration-500 group-hover:bg-blue-700 group-hover:scale-110 md:translate-y-2"></div>
-              
-              <div className="timeline-content bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg md:w-5/12 w-[calc(100%-40px)] ml-[40px] md:ml-auto md:mr-0 relative hover:-translate-y-1 transition-all duration-300 ease-in-out border-l-4 md:border-r-4 md:border-l-0 border-transparent hover:border-l-blue-600 md:hover:border-r-blue-600 hover:shadow-xl">
-                <div className="hidden md:block absolute left-[-16px] top-2 w-0 h-0 border-solid border-transparent border-r-[16px] border-r-white dark:border-r-gray-900 z-[1]"></div>
-                <div className="flex items-center mb-2">
-                  <div className="bg-blue-100 dark:bg-blue-900 rounded-full p-2 mr-4">
-                    <Image src="/img/logo-iut.png" alt="IUT Nice Côte d'Azur" width={40} height={40} className="rounded-full bg-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold">IUT Nice Côte d&apos;Azur</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 pl-5 inline-flex items-center relative">
-                      <span className="absolute left-0 w-3.5 h-3.5">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-full h-full">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                      </span>
-                      <span suppressHydrationWarning>Sept. 2022 → Aujourd&apos;hui</span>
-                    </p>
-                  </div>
-                </div>
-                <p className="text-gray-700 dark:text-gray-300">
-                  Étudiant en BUT-2 Réseaux et Télécommunications, parcours cybersécurité, à l&apos;université Nice Côte d&apos;Azur à Biot.
-                </p>
+            <div className="space-y-3">
+              <p className="text-gray-700 dark:text-gray-300">
+                Chez Instant-System, j&apos;ai eu l&apos;opportunité de développer mes compétences techniques en :
+              </p>
+              <ul className="list-disc pl-5 text-gray-700 dark:text-gray-300 space-y-2">
+                <li>Support technique et assistance aux utilisateurs</li>
+                <li>Gestion et maintenance du parc informatique</li>
+                <li>Configuration et déploiement de postes de travail</li>
+                <li>Participation à la sécurisation des systèmes</li>
+              </ul>
+            </div>
+          </div>
+          
+          {/* Mission Locale - Expérience détaillée */}
+          <div className="experience-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 opacity-0 translate-y-5">
+            <div className="flex items-center mb-4">
+              <div className="bg-blue-100 dark:bg-blue-900 rounded-full p-2 mr-4">
+                <Image src="/img/logo_mlpg.png" alt="Mission Locale" width={40} height={40} className="rounded-full bg-white" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold">Développeur Web à la Mission Locale</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Février 2022</p>
               </div>
             </div>
-            
-            {/* Instant-System */}
-            <div className="timeline-item mb-16 relative opacity-0 translate-y-5 transition-all duration-800 delay-50 group">
-              <div className="timeline-dot absolute left-4 md:left-1/2 transform -translate-x-[42%] md:-translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 z-10 border-4 border-white dark:border-gray-800 transition-all duration-500 group-hover:bg-blue-700 group-hover:scale-110 md:translate-y-2"></div>
-              
-              <div className="timeline-content bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg md:w-5/12 w-[calc(100%-40px)] ml-[40px] md:ml-0 md:mr-auto relative hover:-translate-y-1 transition-all duration-300 ease-in-out border-l-4 md:border-l-4 md:border-r-0 border-transparent hover:border-l-blue-600 md:hover:border-l-blue-600 hover:shadow-xl">
-                <div className="hidden md:block absolute right-[-16px] top-2 w-0 h-0 border-solid border-transparent border-l-[16px] border-l-white dark:border-l-gray-900 z-[1]"></div>
-                <div className="flex items-center mb-2">
-                  <div className="bg-blue-100 dark:bg-blue-900 rounded-full p-2 mr-4">
-                    <Image src="/img/logo_Instant_system.png" alt="Instant-System" width={40} height={40} className="rounded-full bg-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold">Instant-System</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 pl-5 inline-flex items-center relative">
-                      <span className="absolute left-0 w-3.5 h-3.5">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-full h-full">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                      </span>
-                      <span suppressHydrationWarning>Oct. 2022 → Août 2023</span>
-                    </p>
-                  </div>
-                </div>
-                <p className="text-gray-700 dark:text-gray-300">
-                  Apprenti technicien informatique en contrat d&apos;apprentissage chez Instant-System à Biot.
-                </p>
+            <div className="space-y-3">
+              <p className="text-gray-700 dark:text-gray-300">
+                Lors de mon stage à la Mission Locale du Pays de Grasse, j&apos;ai contribué au développement du site web :
+              </p>
+              <ul className="list-disc pl-5 text-gray-700 dark:text-gray-300 space-y-2">
+                <li>Amélioration de l&apos;interface utilisateur</li>
+                <li>Intégration de nouveaux contenus et fonctionnalités</li>
+                <li>Optimisation pour une meilleure expérience utilisateur</li>
+                <li>Travail en équipe avec les responsables de communication</li>
+              </ul>
+            </div>
+          </div>
+          
+          {/* CSTB - Expérience détaillée */}
+          <div className="experience-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 opacity-0 translate-y-5">
+            <div className="flex items-center mb-4">
+              <div className="bg-blue-100 dark:bg-blue-900 rounded-full p-2 mr-4">
+                <Image src="/img/logo_CSTB.jpeg" alt="CSTB" width={40} height={40} className="rounded-full bg-white" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold">Stage d&apos;observation au CSTB</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Décembre 2018</p>
               </div>
             </div>
-            
-            {/* 2iTech Academy */}
-            <div className="timeline-item mb-16 relative opacity-0 translate-y-5 transition-all duration-800 delay-50 group">
-              <div className="timeline-dot absolute left-4 md:left-1/2 transform -translate-x-[42%] md:-translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 z-10 border-4 border-white dark:border-gray-800 transition-all duration-500 group-hover:bg-blue-700 group-hover:scale-110 md:translate-y-2"></div>
-              
-              <div className="timeline-content bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg md:w-5/12 w-[calc(100%-40px)] ml-[40px] md:ml-auto md:mr-0 relative hover:-translate-y-1 transition-all duration-300 ease-in-out border-l-4 md:border-r-4 md:border-l-0 border-transparent hover:border-l-blue-600 md:hover:border-r-blue-600 hover:shadow-xl">
-                <div className="hidden md:block absolute left-[-16px] top-2 w-0 h-0 border-solid border-transparent border-r-[16px] border-r-white dark:border-r-gray-900 z-[1]"></div>
-                <div className="flex items-center mb-2">
-                  <div className="bg-blue-100 dark:bg-blue-900 rounded-full p-2 mr-4">
-                    <Image src="/img/logo_2itech.png" alt="2iTech Academy" width={40} height={40} className="rounded-full bg-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold">2iTech Academy</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 pl-5 inline-flex items-center relative">
-                      <span className="absolute left-0 w-3.5 h-3.5">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-full h-full">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                      </span>
-                      <span suppressHydrationWarning>Oct. 2022 → Août 2023</span>
-                    </p>
-                  </div>
-                </div>
-                <p className="text-gray-700 dark:text-gray-300">
-                  Étudiant en TSSR (Technicien Supérieur Système et Réseaux) à 2iTech Academy à Sophia-Antipolis.
-                </p>
-              </div>
+            <div className="space-y-3">
+              <p className="text-gray-700 dark:text-gray-300">
+                Au Centre Scientifique et Technique du Bâtiment à Sophia-Antipolis, j&apos;ai pu observer le travail de l&apos;équipe de développement web :
+              </p>
+              <ul className="list-disc pl-5 text-gray-700 dark:text-gray-300 space-y-2">
+                <li>Découverte des méthodologies de travail en équipe</li>
+                <li>Initiation aux technologies web utilisées en environnement professionnel</li>
+                <li>Compréhension des enjeux du développement d&apos;applications métier</li>
+                <li>Sensibilisation aux bonnes pratiques de programmation</li>
+              </ul>
             </div>
-            
-            {/* Lycée */}
-            <div className="timeline-item mb-16 relative opacity-0 translate-y-5 transition-all duration-800 delay-50 group">
-              <div className="timeline-dot absolute left-4 md:left-1/2 transform -translate-x-[42%] md:-translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 z-10 border-4 border-white dark:border-gray-800 transition-all duration-500 group-hover:bg-blue-700 group-hover:scale-110 md:translate-y-2"></div>
-              
-              <div className="timeline-content bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg md:w-5/12 w-[calc(100%-40px)] ml-[40px] md:ml-0 md:mr-auto relative hover:-translate-y-1 transition-all duration-300 ease-in-out border-l-4 md:border-l-4 md:border-r-0 border-transparent hover:border-l-blue-600 md:hover:border-l-blue-600 hover:shadow-xl">
-                <div className="hidden md:block absolute right-[-16px] top-2 w-0 h-0 border-solid border-transparent border-l-[16px] border-l-white dark:border-l-gray-900 z-[1]"></div>
-                <div className="flex items-center mb-2">
-                  <div className="bg-blue-100 dark:bg-blue-900 rounded-full p-2 mr-4 flex-shrink-0" style={{ width: '56px', height: '56px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <Image 
-                      src="/img/logo_lycee.png" 
-                      alt="Lycée Alexis de Tocqueville" 
-                      width={40} 
-                      height={40} 
-                      className="rounded-full bg-white"
-                      style={{ width: '40px', height: '40px', objectFit: 'cover' }}
-                    />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold">Lycée Alexis de Tocqueville</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 pl-5 inline-flex items-center relative">
-                      <span className="absolute left-0 w-3.5 h-3.5">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-full h-full">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                      </span>
-                      <span suppressHydrationWarning>Juin 2022</span>
-                    </p>
-                  </div>
-                </div>
-                <p className="text-gray-700 dark:text-gray-300">
-                  Passage du baccalauréat STI2D au lycée Alexis de Tocqueville à Grasse, obtenu avec mention assez bien.
-                </p>
-              </div>
-            </div>
-            
-            {/* Mission Locale */}
-            <div className="timeline-item mb-16 relative opacity-0 translate-y-5 transition-all duration-800 delay-50 group">
-              <div className="timeline-dot absolute left-4 md:left-1/2 transform -translate-x-[42%] md:-translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 z-10 border-4 border-white dark:border-gray-800 transition-all duration-500 group-hover:bg-blue-700 group-hover:scale-110 md:translate-y-2"></div>
-              
-              <div className="timeline-content bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg md:w-5/12 w-[calc(100%-40px)] ml-[40px] md:ml-auto md:mr-0 relative hover:-translate-y-1 transition-all duration-300 ease-in-out border-l-4 md:border-r-4 md:border-l-0 border-transparent hover:border-l-blue-600 md:hover:border-r-blue-600 hover:shadow-xl">
-                <div className="hidden md:block absolute left-[-16px] top-2 w-0 h-0 border-solid border-transparent border-r-[16px] border-r-white dark:border-r-gray-900 z-[1]"></div>
-                <div className="flex items-center mb-2">
-                  <div className="bg-blue-100 dark:bg-blue-900 rounded-full p-2 mr-4 flex-shrink-0" style={{ width: '56px', height: '56px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <Image 
-                      src="/img/logo_mlpg.png" 
-                      alt="Mission Locale" 
-                      width={40} 
-                      height={40} 
-                      className="rounded-full bg-white"
-                      style={{ width: '40px', height: '40px', objectFit: 'cover' }}
-                    />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold">Mission Locale du Pays de Grasse</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 pl-5 inline-flex items-center relative">
-                      <span className="absolute left-0 w-3.5 h-3.5">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-full h-full">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                      </span>
-                      <span suppressHydrationWarning>Fév. 2022</span>
-                    </p>
-                  </div>
-                </div>
-                <p className="text-gray-700 dark:text-gray-300">
-                  Stage en tant que développeur web à la Mission Locale du Pays de Grasse pour aider au développement du site.
-                </p>
-              </div>
-            </div>
-            
-            {/* CSTB */}
-            <div className="timeline-item relative opacity-0 translate-y-5 transition-all duration-800 delay-50 group">
-              <div className="timeline-dot absolute left-4 md:left-1/2 transform -translate-x-[42%] md:-translate-x-1/2 w-6 h-6 rounded-full bg-blue-600 z-10 border-4 border-white dark:border-gray-800 transition-all duration-500 group-hover:bg-blue-700 group-hover:scale-110 md:translate-y-2"></div>
-              
-              <div className="timeline-content bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg md:w-5/12 w-[calc(100%-40px)] ml-[40px] md:ml-0 md:mr-auto relative hover:-translate-y-1 transition-all duration-300 ease-in-out border-l-4 md:border-l-4 md:border-r-0 border-transparent hover:border-l-blue-600 md:hover:border-l-blue-600 hover:shadow-xl">
-                <div className="hidden md:block absolute right-[-16px] top-2 w-0 h-0 border-solid border-transparent border-l-[16px] border-l-white dark:border-l-gray-900 z-[1]"></div>
-                <div className="flex items-center mb-2">
-                  <div className="bg-blue-100 dark:bg-blue-900 rounded-full p-2 mr-4">
-                    <Image src="/img/logo_CSTB.jpeg" alt="CSTB" width={40} height={40} className="rounded-full bg-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold">CSTB</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 pl-5 inline-flex items-center relative">
-                      <span className="absolute left-0 w-3.5 h-3.5">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-full h-full">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                      </span>
-                      <span suppressHydrationWarning>Déc. 2018</span>
-                    </p>
-                  </div>
-                </div>
-                <p className="text-gray-700 dark:text-gray-300">
-                  Stage d&apos;observation au CSTB à Sophia-Antipolis au pôle développement web.
-                </p>
-              </div>
-            </div>
+          </div>
+        </div>
+        
+        <div className="text-center mt-16">
+          <h3 className="text-2xl font-bold mb-4">Compétences Développées</h3>
+          <div className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto">
+            <span className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full text-sm font-medium">DevOps</span>
+            <span className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full text-sm font-medium">CI/CD</span>
+            <span className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full text-sm font-medium">SharePoint</span>
+            <span className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full text-sm font-medium">Support Technique</span>
+            <span className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full text-sm font-medium">Gestion de Parc</span>
+            <span className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full text-sm font-medium">Développement Web</span>
+            <span className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full text-sm font-medium">Automatisation</span>
+            <span className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full text-sm font-medium">Résolution de problèmes</span>
           </div>
         </div>
       </div>
 
       <style jsx>{`
-        .timeline-item.in-view {
+        .experience-card.in-view {
           opacity: 1;
           transform: translateY(0);
-          transition-duration: 1.2s;
+          transition: opacity 0.8s ease, transform 0.6s ease;
         }
       `}</style>
     </section>

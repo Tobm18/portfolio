@@ -85,11 +85,11 @@ export default function Navbar() {
             className="h-8 w-auto dark:invert"
           />
         </Link>
-        
-        {/* Desktop menu */}
+          {/* Desktop menu */}
         <nav className="hidden md:flex items-center space-x-6">
           <Link href="#about" className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-500 transition">À propos</Link>
           <Link href="#projects" className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-500 transition">Projets</Link>
+          <Link href="#parcours" className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-500 transition">Parcours</Link>
           <Link href="#experience" className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-500 transition">Expérience</Link>
           <Link href="#contact" className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-500 transition">Contact</Link>
           <ThemeToggle />
@@ -123,10 +123,10 @@ export default function Navbar() {
               ? 'max-h-60 transform translate-y-0' 
               : 'max-h-0 transform -translate-y-5'
           }`}
-        >
-          <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
+        >          <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
             <Link href="#about" className="text-gray-800 dark:text-gray-200" onClick={closeMenu}>À propos</Link>
             <Link href="#projects" className="text-gray-800 dark:text-gray-200" onClick={closeMenu}>Projets</Link>            
+            <Link href="#parcours" className="text-gray-800 dark:text-gray-200" onClick={closeMenu}>Parcours</Link>
             <Link href="#experience" className="text-gray-800 dark:text-gray-200" onClick={closeMenu}>Expérience</Link>
             <Link href="#contact" className="text-gray-800 dark:text-gray-200" onClick={closeMenu}>Contact</Link>
           </div>
