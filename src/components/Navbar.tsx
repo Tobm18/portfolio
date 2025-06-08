@@ -84,13 +84,13 @@ export default function Navbar() {
             height={32} 
             className="h-8 w-auto dark:invert"
           />
-        </Link>
-          {/* Desktop menu */}
+        </Link>        {/* Desktop menu */}
         <nav className="hidden md:flex items-center space-x-6">
           <Link href="#about" className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-500 transition">À propos</Link>
           <Link href="#projects" className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-500 transition">Projets</Link>
           <Link href="#parcours" className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-500 transition">Parcours</Link>
           <Link href="#experience" className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-500 transition">Expérience</Link>
+          <Link href="#skills" className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-500 transition">Compétences</Link>
           <Link href="#contact" className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-500 transition">Contact</Link>
           <ThemeToggle />
         </nav>
@@ -128,6 +128,7 @@ export default function Navbar() {
             <Link href="#projects" className="text-gray-800 dark:text-gray-200" onClick={closeMenu}>Projets</Link>            
             <Link href="#parcours" className="text-gray-800 dark:text-gray-200" onClick={closeMenu}>Parcours</Link>
             <Link href="#experience" className="text-gray-800 dark:text-gray-200" onClick={closeMenu}>Expérience</Link>
+            <Link href="#skills" className="text-gray-800 dark:text-gray-200" onClick={closeMenu}>Compétences</Link>
             <Link href="#contact" className="text-gray-800 dark:text-gray-200" onClick={closeMenu}>Contact</Link>
           </div>
         </div>
