@@ -51,7 +51,7 @@ export default function Experience() {
               </div>
               <div>
                 <h3 className="text-xl font-bold">DevOps chez ProBTP</h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Septembre 2023 - Présent</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Septembre 2024 - Présent</p>
               </div>
             </div>
             <div className="space-y-3">
@@ -83,10 +83,10 @@ export default function Experience() {
                 Chez Instant-System, j&apos;ai eu l&apos;opportunité de développer mes compétences techniques en :
               </p>
               <ul className="list-disc pl-5 text-gray-700 dark:text-gray-300 space-y-2">
-                <li>Support technique et assistance aux utilisateurs</li>
                 <li>Gestion et maintenance du parc informatique</li>
+                <li>Gestion de la sécurisation des systèmes</li>
                 <li>Configuration et déploiement de postes de travail</li>
-                <li>Participation à la sécurisation des systèmes</li>
+                <li>Support technique et assistance aux collaborateurs</li>
               </ul>
             </div>
           </div>
