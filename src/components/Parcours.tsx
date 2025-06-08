@@ -71,7 +71,7 @@ export default function Parcours() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
                       </span>
-                      <span suppressHydrationWarning>Sept. 2023 → Aujourd&apos;hui</span>
+                      <span suppressHydrationWarning>Sept. 2024 → Aujourd&apos;hui</span>
                     </p>
                   </div>
                 </div>
@@ -100,7 +100,7 @@ export default function Parcours() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
                       </span>
-                      <span suppressHydrationWarning>Sept. 2022 → Aujourd&apos;hui</span>
+                      <span suppressHydrationWarning>Sept. 2023 → Aujourd&apos;hui</span>
                     </p>
                   </div>
                 </div>
