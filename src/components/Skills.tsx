@@ -19,6 +19,7 @@ interface Certification {
   imageAlt?: string; // Texte alternatif pour l'image
   color: string;
   categories: string[]; // Liste des catégories auxquelles la certification est associée
+  certificatePath?: string; // Chemin vers le PDF du certificat
 }
 
 interface SkillsCollection {
@@ -64,7 +65,6 @@ export default function Skills() {
       { name: "Gestion de projet", icon: "📋" },
     ],
   };
-
   const certifications: Certification[] = [
     {
       title: "Certification Cisco CCNA V1",
@@ -72,7 +72,8 @@ export default function Skills() {
       imageSrc: "/skills/cisco.png",
       imageAlt: "Logo Cisco CCNA",
       color: "yellow",
-      categories: ["network"]
+      categories: ["network"],
+      certificatePath: "/skills/certif/CCNA1.pdf"
     },
     {
       title: "Certification Cisco CCNA V2",
@@ -80,7 +81,8 @@ export default function Skills() {
       imageSrc: "/skills/cisco.png",
       imageAlt: "Logo Cisco CCNA",
       color: "yellow",
-      categories: ["network"]
+      categories: ["network"],
+      certificatePath: "/skills/certif/CCNA2.pdf"
     },
   ];
 
@@ -110,11 +112,37 @@ export default function Skills() {
   // Reset le state des certifications quand on change d'onglet
   useEffect(() => {
     setShowCertifications(false);
-  }, [activeTab]);
-  
-  // Fonction pour basculer l'affichage des certifications
+  }, [activeTab]);  // Fonction pour basculer l'affichage des certifications
   const toggleCertifications = () => {
-    setShowCertifications(prev => !prev);
+    setShowCertifications(prev => {
+      const newValue = !prev;
+      // Si on affiche les certifications, faire un scroll vers elles après un délai pour laisser le temps à l'animation
+      if (newValue) {
+        setTimeout(() => {
+          const certificationSection = document.querySelector('.certification-section');
+          if (certificationSection) {
+            const rect = certificationSection.getBoundingClientRect();
+            const offsetTop = window.pageYOffset + rect.top;
+            const windowHeight = window.innerHeight;
+            const offset = 80; // Offset de 80px depuis le bas de l'écran
+            
+            // Calculer la position pour que la section apparaisse 80px plus haut que le bas de l'écran
+            const targetPosition = offsetTop - windowHeight + rect.height + offset;
+            
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }, 100); // Délai court pour permettre au DOM de se mettre à jour
+      }
+      return newValue;
+    });
+  };
+
+  // Fonction pour ouvrir le certificat dans un nouvel onglet
+  const openCertificate = (certificatePath: string) => {
+    window.open(certificatePath, '_blank');
   };
 
   return (
@@ -250,18 +278,18 @@ export default function Skills() {
         {certifications.filter(cert => cert.categories.includes(activeTab)).length > 0 && showCertifications && (
           <div className={`mt-12 certification-section ${showCertifications ? 'animate-visible' : 'opacity-0 translate-y-6'}`}>
             <h3 className="text-2xl md:text-3xl font-bold text-center mb-8 dark:text-white">Certifications</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              {certifications
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">              {certifications
                 .filter(cert => cert.categories.includes(activeTab))
                 .map((cert, index) => (
                   <div 
                     key={cert.title}
-                    className="relative group bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-1"
+                    className="relative group bg-white dark:bg-gray-900 rounded-xl shadow-lg overflow-hidden transform transition-all duration-500 hover:shadow-2xl hover:-translate-y-1 cursor-pointer"
                     style={{
                       opacity: 0,
                       transform: 'translateY(20px)',
                       animation: `fadeInUp 0.6s ease-out ${index * 0.15}s forwards`
                     }}
+                    onClick={() => cert.certificatePath && openCertificate(cert.certificatePath)}
                   >
                     <div 
                       className={`absolute top-0 left-0 w-2 h-full ${cert.color !== 'yellow' ? 
@@ -288,10 +316,20 @@ export default function Skills() {
                             <span className="text-2xl">{cert.icon}</span>
                           )}
                         </div>
-                        <div className="ml-4">
+                        <div className="ml-4 flex-1">
                           <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{cert.title}</h4>
-                          <div className="inline-block py-1 px-3 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200">
-                            {cert.year}
+                          <div className="flex items-center justify-between">
+                            <div className="inline-block py-1 px-3 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200">
+                              {cert.year}
+                            </div>
+                            {cert.certificatePath && (
+                              <div className="flex items-center text-blue-600 dark:text-blue-400 text-sm font-medium group-hover:text-blue-700 dark:group-hover:text-blue-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                </svg>
+                                Voir le certificat
+                              </div>
+                            )}
                           </div>
                         </div>
                       </div>
