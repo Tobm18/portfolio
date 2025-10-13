@@ -237,7 +237,7 @@ export default function Projects() {
       description: "Ce portfolio, à la base réalisé dans le cadre d'un projet universitaire, a pour objectif de présenter mes compétences, mes créations et mon parcours.",
       image: "/projects/web/portfolio.jpg",
       tags: ["React", "Next.js", "Tailwind CSS"],
-      demoLink: "https://tballester.uca-project.online/",
+      demoLink: "https://tballester.uca-projects.fr/",
       codeLink: "https://github.com/Tobm18/portfolio",
       category: "web"
     },
@@ -247,7 +247,7 @@ export default function Projects() {
       description: "Création d'un site vitrine dans le cadre d'un projet universitaire qui présente la plongée sous marine, une passion commune avec mes amis.",
       image: "/projects/web/plongee.jpg",
       tags: ["HTML", "CSS", "JavaScript"],
-      demoLink: "https://plongee.uca-project.online/",
+      demoLink: "https://plongee.uca-projects.fr/",
       codeLink: "https://github.com/Tobm18/Projet_site_web_plongee",
       category: "web"
     },
