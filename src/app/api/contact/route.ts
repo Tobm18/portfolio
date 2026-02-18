@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
       html: `<p><b>Nom:</b> ${name}</p><p><b>Email:</b> ${email}</p><p>${message.replace(/\n/g, '<br>')}</p>`
     });
 
-    return NextResponse.json({ message: 'Votre message a bien été envoyé !' });
+    return NextResponse.json({ message: 'Merci pour votre message ! Je vous répondrai bientôt.' });
   } catch (error) {
     return NextResponse.json({ message: "Erreur lors de l'envoi du message.", error: String(error) }, { status: 500 });
   }

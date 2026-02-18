@@ -35,7 +35,7 @@ export default function Contact() {
       if (response.ok) {
         setSubmitStatus({
           success: true,
-          message: data.message || "Merci ! Votre message a été envoyé avec succès."
+          message: data.message || "Success"
         });
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
